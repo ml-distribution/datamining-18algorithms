@@ -14,7 +14,7 @@ public class SVMTool {
 	// 训练集数据文件路径
 	private String trainDataPath;
 	// svm_problem对象，用于构造svm model模型
-	private svm_problem sProblem;
+	private SVMProblem sProblem;
 	// svm参数，里面有svm支持向量机的类型和不同 的svm的核函数类型
 	private svm_parameter sParam;
 
@@ -38,13 +38,13 @@ public class SVMTool {
 	 *
 	 * @return
 	 */
-	private svm_problem initSvmProblem() {
+	private SVMProblem initSvmProblem() {
 		List<Double> label = new ArrayList<Double>();
-		List<svm_node[]> nodeSet = new ArrayList<svm_node[]>();
+		List<SVMNode[]> nodeSet = new ArrayList<SVMNode[]>();
 		getData(nodeSet, label, trainDataPath);
 
 		int dataRange = nodeSet.get(0).length;
-		svm_node[][] datas = new svm_node[nodeSet.size()][dataRange]; // 训练集的向量表
+		SVMNode[][] datas = new SVMNode[nodeSet.size()][dataRange]; // 训练集的向量表
 		for (int i = 0; i < datas.length; i++) {
 			for (int j = 0; j < dataRange; j++) {
 				datas[i][j] = nodeSet.get(i)[j];
@@ -56,7 +56,7 @@ public class SVMTool {
 		}
 
 		// 定义svm_problem对象
-		svm_problem problem = new svm_problem();
+		SVMProblem problem = new SVMProblem();
 		problem.l = nodeSet.size(); // 向量个数
 		problem.x = datas; // 训练集向量表
 		problem.y = lables; // 对应的lable数组
@@ -91,11 +91,11 @@ public class SVMTool {
 	public void svmPredictData(String testDataPath) {
 		// 获取测试数据
 		List<Double> testlabel = new ArrayList<Double>();
-		List<svm_node[]> testnodeSet = new ArrayList<svm_node[]>();
+		List<SVMNode[]> testnodeSet = new ArrayList<SVMNode[]>();
 		getData(testnodeSet, testlabel, testDataPath);
 		int dataRange = testnodeSet.get(0).length;
 
-		svm_node[][] testdatas = new svm_node[testnodeSet.size()][dataRange]; // 训练集的向量表
+		SVMNode[][] testdatas = new SVMNode[testnodeSet.size()][dataRange]; // 训练集的向量表
 		for (int i = 0; i < testdatas.length; i++) {
 			for (int j = 0; j < dataRange; j++) {
 				testdatas[i][j] = testnodeSet.get(i)[j];
@@ -109,10 +109,10 @@ public class SVMTool {
 
 		// 如果参数没有问题，则svm.svm_check_parameter()函数返回null,否则返回error描述。
 		// 对svm的配置参数叫验证，因为有些参数只针对部分的支持向量机的类型
-		System.out.println(svm.svm_check_parameter(sProblem, sParam));
+		System.out.println(SVM.svm_check_parameter(sProblem, sParam));
 		System.out.println("------------检验参数-----------");
 		// 训练SVM分类模型
-		svm_model model = svm.svm_train(sProblem, sParam);
+		SVMModel model = SVM.svm_train(sProblem, sParam);
 
 		// 预测测试数据的lable
 		double err = 0.0;
@@ -120,7 +120,7 @@ public class SVMTool {
 			double truevalue = testlables[i];
 			// 测试数据真实值
 			System.out.print(truevalue + " ");
-			double predictValue = svm.svm_predict(model, testdatas[i]);
+			double predictValue = SVM.svm_predict(model, testdatas[i]);
 			// 测试数据预测值
 			System.out.println(predictValue);
 		}
@@ -136,7 +136,7 @@ public class SVMTool {
 	 * @param filename
 	 *            数据文件地址
 	 */
-	private void getData(List<svm_node[]> nodeSet, List<Double> label, String filename) {
+	private void getData(List<SVMNode[]> nodeSet, List<Double> label, String filename) {
 		try {
 
 			FileReader fr = new FileReader(new File(filename));
@@ -144,9 +144,9 @@ public class SVMTool {
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				String[] datas = line.split(",");
-				svm_node[] vector = new svm_node[datas.length - 1];
+				SVMNode[] vector = new SVMNode[datas.length - 1];
 				for (int i = 0; i < datas.length - 1; i++) {
-					svm_node node = new svm_node();
+					SVMNode node = new SVMNode();
 					node.index = i + 1;
 					node.value = Double.parseDouble(datas[i]);
 					vector[i] = node;

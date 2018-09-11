@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author lyq
  *
  */
-public class svm_node implements Serializable {
+public class SVMNode implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

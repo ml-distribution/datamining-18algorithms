@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * 包含了训练集数据的基本信息
  */
-public class svm_problem implements Serializable {
+public class SVMProblem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,6 +14,6 @@ public class svm_problem implements Serializable {
 	//分类类型值数组
 	public double[] y;
 	//训练集向量表
-	public svm_node[][] x;
+	public SVMNode[][] x;
 
 }
