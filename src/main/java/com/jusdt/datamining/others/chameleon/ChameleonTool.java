@@ -9,11 +9,9 @@ import java.util.ArrayList;
 
 /**
  * Chameleon 两阶段聚类算法工具类
- *
- * @author lyq
- *
  */
 public class ChameleonTool {
+
 	// 测试数据点文件地址
 	private String filePath;
 	// 第一阶段的k近邻的k大小

@@ -2,10 +2,9 @@ package com.jusdt.datamining.sequential.patterns.gsp;
 
 /**
  * GSP序列模式分析算法
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\testInput.txt";
 		//最小支持度阈值
@@ -18,4 +17,5 @@ public class Client {
 		GSPTool tool = new GSPTool(filePath, minSupportCount, min_gap, max_gap);
 		tool.gspCalculate();
 	}
+
 }

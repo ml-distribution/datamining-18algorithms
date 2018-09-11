@@ -2,9 +2,6 @@ package com.jusdt.datamining.association.analysis.apriori;
 
 /**
  * apriori关联规则挖掘算法调用类
- *
- * @author lyq
- *
  */
 public class Client {
 

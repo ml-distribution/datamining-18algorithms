@@ -2,8 +2,6 @@ package com.jusdt.datamining.classification.knn;
 
 /**
  * k最近邻算法场景类型
- * @author lyq
- *
  */
 public class Client {
 

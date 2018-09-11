@@ -11,11 +11,9 @@ import java.util.Random;
 
 /**
  * 随机森林算法工具类
- *
- * @author lyq
- *
  */
 public class RandomForestTool {
+
 	// 测试数据文件地址
 	private String filePath;
 	// 决策树的样本占总数的占比率

@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 字符项集类
- *
- * @author lyq
- *
  */
 public class ItemSet {
+
 	// 项集内的字符
 	private ArrayList<String> items;
 

@@ -2,11 +2,9 @@ package com.jusdt.datamining.others.kdtree;
 
 /**
  * 空间矢量，表示所代表的空间范围
- *
- * @author lyq
- *
  */
 public class Range {
+
 	// 边界左边界
 	double left;
 	// 边界右边界

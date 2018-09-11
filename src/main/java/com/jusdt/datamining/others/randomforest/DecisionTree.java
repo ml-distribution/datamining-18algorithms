@@ -6,11 +6,9 @@ import java.util.Map;
 
 /**
  * 决策树
- *
- * @author lyq
- *
  */
 public class DecisionTree {
+
 	// 树的根节点
 	TreeNode rootNode;
 	// 数据的属性列名称

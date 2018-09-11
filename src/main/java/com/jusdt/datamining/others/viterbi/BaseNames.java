@@ -2,10 +2,9 @@ package com.jusdt.datamining.others.viterbi;
 
 /**
  * 基本变量定义类
- * @author lyq
- *
  */
 public class BaseNames {
+
 	//日期天数下标
 	public static final int DAY1 = 0;
 	public static final int DAY2 = 1;
@@ -21,4 +20,5 @@ public class BaseNames {
 	public static final int HUMIDITY_DRYISH = 1;
 	public static final int HUMIDITY_DAMP = 1;
 	public static final int HUMIDITY_SOGGY = 1;
+
 }

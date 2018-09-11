@@ -5,9 +5,6 @@ import java.util.Stack;
 
 /**
  * 图编码深度优先搜索类，判断当前编码在给定图中是否为最小编码
- *
- * @author lyq
- *
  */
 public class DFSCodeTraveler {
 

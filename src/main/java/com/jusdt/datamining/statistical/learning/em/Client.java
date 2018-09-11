@@ -2,10 +2,9 @@ package com.jusdt.datamining.statistical.learning.em;
 
 /**
  * EM期望最大化算法场景调用类
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
 
@@ -13,4 +12,5 @@ public class Client {
 		tool.readDataFile();
 		tool.exceptMaxStep();
 	}
+
 }

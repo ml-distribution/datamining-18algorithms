@@ -7,11 +7,9 @@ import java.util.Queue;
 
 /**
  * CART分类回归树算法工具类
- *
- * @author lyq
- *
  */
 public class CARTTool {
+
 	// 类标号的值类型
 	private final String YES = "Yes";
 	private final String NO = "No";

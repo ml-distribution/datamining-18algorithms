@@ -10,11 +10,9 @@ import java.util.Map;
 
 /**
  * 粗糙集属性约简算法工具类
- *
- * @author lyq
- *
  */
 public class RoughSetsTool {
+
 	// 决策属性名称
 	public static String DECISION_ATTR_NAME;
 

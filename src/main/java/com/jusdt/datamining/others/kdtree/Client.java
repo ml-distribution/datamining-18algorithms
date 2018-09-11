@@ -4,11 +4,9 @@ import java.text.MessageFormat;
 
 /**
  * KD树算法测试类
- *
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
 		Point queryNode;
@@ -31,4 +29,5 @@ public class Client {
 		System.out.println(MessageFormat.format("距离查询点({0}, {1})最近的坐标点为({2}, {3})", queryNode.x, queryNode.y,
 				searchedNode.x, searchedNode.y));
 	}
+
 }

@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 蚂蚁类，进行路径搜索的载体
- *
- * @author lyq
- *
  */
 public class Ant implements Comparable<Ant> {
+
 	// 蚂蚁当前所在城市
 	String currentPos;
 	// 蚂蚁遍历完回到原点所用的总距离

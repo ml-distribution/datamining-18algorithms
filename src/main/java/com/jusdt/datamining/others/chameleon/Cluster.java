@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 聚簇类
- *
- * @author lyq
- *
  */
 public class Cluster implements Cloneable {
+
 	//簇唯一id标识号
 	int id;
 	// 聚簇内的坐标点集合

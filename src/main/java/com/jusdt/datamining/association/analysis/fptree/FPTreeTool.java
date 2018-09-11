@@ -11,11 +11,9 @@ import java.util.Map;
 
 /**
  * FPTree算法工具类
- *
- * @author lyq
- *
  */
 public class FPTreeTool {
+
 	// 输入数据文件位置
 	private String filePath;
 	// 最小支持度阈值

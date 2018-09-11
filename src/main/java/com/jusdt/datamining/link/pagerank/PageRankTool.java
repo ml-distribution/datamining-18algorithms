@@ -9,11 +9,9 @@ import java.util.ArrayList;
 
 /**
  * PageRank网页排名算法工具类
- *
- * @author lyq
- *
  */
 public class PageRankTool {
+
 	// 测试输入数据
 	private String filePath;
 	// 网页总数量

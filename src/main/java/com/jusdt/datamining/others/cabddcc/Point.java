@@ -2,10 +2,9 @@ package com.jusdt.datamining.others.cabddcc;
 
 /**
  * 坐标点类
- * @author lyq
- *
  */
 public class Point implements Comparable<Point> {
+
 	//坐标点id号,id号唯一
 	int id;
 	//坐标横坐标

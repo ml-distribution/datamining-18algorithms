@@ -11,11 +11,9 @@ import java.util.Map;
 
 /**
  * 基于多支持度的Apriori算法工具类
- *
- * @author lyq
- *
  */
 public class MSAprioriTool {
+
 	// 前件判断的结果值，用于关联规则的推导
 	public static final int PREFIX_NOT_SUB = -1;
 	public static final int PREFIX_EQUAL = 1;

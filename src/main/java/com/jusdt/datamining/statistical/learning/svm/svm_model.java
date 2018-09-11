@@ -3,7 +3,12 @@
 //
 package com.jusdt.datamining.statistical.learning.svm;
 
-public class svm_model implements java.io.Serializable {
+import java.io.Serializable;
+
+public class svm_model implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	//svm支持向量机的参数
 	svm_parameter param; // parameter
 	//分类的类型数
@@ -21,4 +26,5 @@ public class svm_model implements java.io.Serializable {
 	int[] label; // label of each class (label[k])
 	int[] nSV; // number of SVs for each class (nSV[k])
 	// nSV[0] + nSV[1] + ... + nSV[k-1] = l
+
 };

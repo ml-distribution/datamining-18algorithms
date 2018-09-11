@@ -11,11 +11,9 @@ import java.util.Stack;
 
 /**
  * KD树-k维空间关键数据检索算法工具类
- *
- * @author lyq
- *
  */
 public class KDTreeTool {
+
 	// 空间平面的方向
 	public static final int DIRECTION_X = 0;
 	public static final int DIRECTION_Y = 1;

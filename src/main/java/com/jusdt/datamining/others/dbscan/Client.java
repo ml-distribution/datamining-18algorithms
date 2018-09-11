@@ -2,10 +2,9 @@ package com.jusdt.datamining.others.dbscan;
 
 /**
  * Dbscan基于密度的聚类算法测试类
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
 		//簇扫描半径
@@ -16,4 +15,5 @@ public class Client {
 		DBSCANTool tool = new DBSCANTool(filePath, eps, minPts);
 		tool.dbScanCluster();
 	}
+
 }

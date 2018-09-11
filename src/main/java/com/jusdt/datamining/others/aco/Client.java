@@ -2,10 +2,9 @@ package com.jusdt.datamining.others.aco;
 
 /**
  * 蚁群算法测试类
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		//测试数据
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
@@ -29,4 +28,5 @@ public class Client {
 		ACOTool tool = new ACOTool(filePath, antNum, alpha, beita, p, Q);
 		tool.antStartSearching(loopCount);
 	}
+
 }

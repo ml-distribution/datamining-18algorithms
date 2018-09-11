@@ -13,11 +13,9 @@ import java.util.Random;
 
 /**
  * 蚁群算法工具类
- *
- * @author lyq
- *
  */
 public class ACOTool {
+
 	// 输入数据类型
 	public static final int INPUT_CITY_NAME = 1;
 	public static final int INPUT_CITY_DIS = 2;

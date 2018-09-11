@@ -2,11 +2,9 @@ package com.jusdt.datamining.others.tan;
 
 /**
  * TAN树型朴素贝叶斯算法
- *
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
 		// 条件查询语句
@@ -31,4 +29,5 @@ public class Client {
 			System.out.println("分类类别为PlayTennis=Yes");
 		}
 	}
+
 }

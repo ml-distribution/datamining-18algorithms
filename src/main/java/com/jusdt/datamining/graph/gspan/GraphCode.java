@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 图编码类
- * @author lyq
- *
  */
 public class GraphCode {
+
 	//边的集合，边的排序代表着边的添加次序
 	ArrayList<Edge> edgeSeq;
 	//拥有这些边的图的id
@@ -33,4 +32,5 @@ public class GraphCode {
 	public void setGs(ArrayList<Integer> gs) {
 		this.gs = gs;
 	}
+
 }

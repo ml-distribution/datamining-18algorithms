@@ -11,11 +11,9 @@ import java.util.Map;
 
 /**
  * gSpan频繁子图挖掘算法工具类
- *
- * @author lyq
- *
  */
 public class GSpanTool {
+
 	// 文件数据类型
 	public final String INPUT_NEW_GRAPH = "t";
 	public final String INPUT_VERTICE = "v";

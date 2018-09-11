@@ -10,11 +10,9 @@ import java.util.Random;
 
 /**
  * 遗传算法在走迷宫游戏的应用-遗传算法工具类
- *
- * @author lyq
- *
  */
 public class GATool {
+
 	// 迷宫出入口标记
 	public static final int MAZE_ENTRANCE_POS = 1;
 	public static final int MAZE_EXIT_POS = 2;

@@ -12,9 +12,6 @@ import java.util.Map;
 
 /**
  * apriori算法工具类
- *
- * @author lyq
- *
  */
 public class AprioriTool {
 

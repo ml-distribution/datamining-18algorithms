@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 序列类
- *
- * @author lyq
- *
  */
 public class Sequence {
+
 	// 序列内的项集
 	private ArrayList<ItemSet> itemSetList;
 

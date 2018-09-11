@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 /**
  * HITS链接分析算法工具类
- * @author lyq
- *
  */
 public class HITSTool {
+
 	//输入数据文件地址
 	private String filePath;
 	//网页个数

@@ -10,11 +10,9 @@ import java.util.Collections;
 
 /**
  * k均值算法工具类
- *
- * @author lyq
- *
  */
 public class KMeansTool {
+
 	// 输入数据文件地址
 	private String filePath;
 	// 分类类别个数

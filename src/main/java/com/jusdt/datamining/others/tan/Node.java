@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 贝叶斯网络节点类
- *
- * @author lyq
- *
  */
 public class Node {
+
 	//节点唯一id，方便后面节点连接方向的确定
 	int id;
 	// 节点的属性名称

@@ -2,11 +2,9 @@ package com.jusdt.datamining.classification.knn;
 
 /**
  * 样本数据类
- *
- * @author lyq
- *
  */
 public class Sample implements Comparable<Sample> {
+
 	// 样本数据的分类名称
 	private String className;
 	// 样本数据的特征向量

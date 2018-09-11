@@ -9,11 +9,9 @@ import java.util.HashMap;
 
 /**
  * 维特比算法工具类
- *
- * @author lyq
- *
  */
 public class ViterbiTool {
+
 	// 状态转移概率矩阵文件地址
 	private String stmFilePath;
 	// 混淆矩阵文件地址

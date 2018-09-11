@@ -2,9 +2,6 @@ package com.jusdt.datamining.graph.gspan;
 
 /**
  * 边，用五元组表示
- *
- * @author lyq
- *
  */
 public class Edge {
 

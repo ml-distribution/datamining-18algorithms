@@ -2,11 +2,9 @@ package com.jusdt.datamining.statistical.learning.em;
 
 /**
  * 坐标点类
- *
- * @author lyq
- *
  */
 public class Point {
+
 	// 坐标点横坐标
 	private double x;
 	// 坐标点纵坐标

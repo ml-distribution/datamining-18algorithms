@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 序列中的子项集
- *
- * @author lyq
- *
  */
 public class ItemSet {
+
 	/**
 	 * 项集中保存的是数字项数组
 	 */

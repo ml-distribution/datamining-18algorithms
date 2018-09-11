@@ -11,11 +11,9 @@ import java.util.Map;
 
 /**
  * PrefixSpanTool序列模式分析算法工具类
- *
- * @author lyq
- *
  */
 public class PrefixSpanTool {
+
 	// 测试数据文件地址
 	private String filePath;
 	// 最小支持度阈值比例

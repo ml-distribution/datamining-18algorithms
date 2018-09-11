@@ -2,10 +2,9 @@ package com.jusdt.datamining.others.tan;
 
 /**
  * 属性之间的互信息值，表示属性之间的关联性大小
- * @author lyq
- *
  */
 public class AttrMutualInfo implements Comparable<AttrMutualInfo> {
+
 	//互信息值
 	Double value;
 	//关联属性值对

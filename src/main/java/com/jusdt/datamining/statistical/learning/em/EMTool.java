@@ -9,11 +9,9 @@ import java.util.ArrayList;
 
 /**
  * EM最大期望算法工具类
- *
- * @author lyq
- *
  */
 public class EMTool {
+
 	// 测试数据文件地址
 	private String dataFilePath;
 	// 测试坐标点数据

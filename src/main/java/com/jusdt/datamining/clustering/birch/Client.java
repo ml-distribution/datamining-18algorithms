@@ -2,10 +2,9 @@ package com.jusdt.datamining.clustering.birch;
 
 /**
  * BIRCH聚类算法调用类
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\testInput.txt";
 		//内部节点平衡因子B
@@ -18,4 +17,5 @@ public class Client {
 		BIRCHTool tool = new BIRCHTool(filePath, B, L, T);
 		tool.startBuilding();
 	}
+
 }

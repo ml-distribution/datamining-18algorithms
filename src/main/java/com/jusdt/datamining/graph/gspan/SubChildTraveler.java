@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 孩子图搜寻类，在当前边的基础上寻找可能的孩子边
- *
- * @author lyq
- *
  */
 public class SubChildTraveler {
+
 	// 当前的五元组边
 	ArrayList<Edge> edgeSeq;
 	// 当前的图

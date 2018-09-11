@@ -9,11 +9,9 @@ import java.util.HashMap;
 
 /**
  * ID3算法实现类
- *
- * @author lyq
- *
  */
 public class ID3Tool {
+
 	// 类标号的值类型
 	private final String YES = "Yes";
 	private final String NO = "No";

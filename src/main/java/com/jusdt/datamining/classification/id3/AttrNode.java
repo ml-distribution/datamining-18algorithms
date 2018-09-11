@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 属性节点，不是叶子节点
- * @author lyq
- *
  */
 public class AttrNode {
+
 	//当前属性的名字
 	private String attrName;
 	//父节点的分类属性值

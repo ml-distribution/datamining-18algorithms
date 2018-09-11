@@ -8,11 +8,9 @@ import java.util.List;
 
 /**
  * SVM支持向量机工具类
- *
- * @author lyq
- *
  */
 public class SVMTool {
+
 	// 训练集数据文件路径
 	private String trainDataPath;
 	// svm_problem对象，用于构造svm model模型

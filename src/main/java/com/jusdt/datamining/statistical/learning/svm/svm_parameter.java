@@ -1,6 +1,11 @@
 package com.jusdt.datamining.statistical.learning.svm;
 
-public class svm_parameter implements Cloneable, java.io.Serializable {
+import java.io.Serializable;
+
+public class svm_parameter implements Cloneable, Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	/* svm_type 支持向量机的类型*/
 	public static final int C_SVC = 0;
 	public static final int NU_SVC = 1;

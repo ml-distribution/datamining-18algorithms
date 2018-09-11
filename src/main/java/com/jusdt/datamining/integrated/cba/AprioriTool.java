@@ -8,11 +8,9 @@ import java.util.Map;
 
 /**
  * apriori算法工具类
- *
- * @author lyq
- *
  */
 public class AprioriTool {
+
 	// 最小支持度计数
 	private int minSupportCount;
 	// 每个事务中的商品ID

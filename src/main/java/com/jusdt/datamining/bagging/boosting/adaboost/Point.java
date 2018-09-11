@@ -3,10 +3,9 @@ package com.jusdt.datamining.bagging.boosting.adaboost;
 /**
  * 坐标点类
  *
- * @author lyq
- *
  */
 public class Point {
+
 	// 坐标点x坐标
 	private int x;
 	// 坐标点y坐标

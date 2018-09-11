@@ -2,10 +2,9 @@ package com.jusdt.datamining.others.msapriori;
 
 /**
  * 基于多支持度的Apriori算法测试类
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		//是否是事务型数据
 		boolean isTransaction;
@@ -42,4 +41,5 @@ public class Client {
 		tool = new MSAprioriTool(tableFilePath, minConf, minSup, isTransaction);
 		tool.calFItems();
 	}
+
 }

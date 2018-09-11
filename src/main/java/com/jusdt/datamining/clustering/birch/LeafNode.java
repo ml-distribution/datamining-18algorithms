@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * CF树叶子节点
- *
- * @author lyq
- *
  */
 public class LeafNode extends ClusteringFeature {
+
 	// 孩子集群
 	private ArrayList<Cluster> clusterChilds;
 	// 父亲节点

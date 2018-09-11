@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 知识系统
- *
- * @author lyq
- *
  */
 public class KnowledgeSystem {
+
 	// 知识系统内的集合
 	ArrayList<RecordCollection> ksCollections;
 

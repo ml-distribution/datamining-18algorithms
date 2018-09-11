@@ -2,8 +2,6 @@ package com.jusdt.datamining.graph.gspan;
 
 /**
  * 边的频繁统计
- * @author lyq
- *
  */
 public class EdgeFrequency {
 

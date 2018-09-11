@@ -5,11 +5,9 @@ import java.util.Random;
 
 /**
  * 遗传算法工具类
- *
- * @author lyq
- *
  */
 public class GATool {
+
 	// 变量最小值
 	private int minNum;
 	// 变量最大值

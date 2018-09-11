@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 聚类特征基本属性
- *
- * @author lyq
- *
  */
 public abstract class ClusteringFeature {
+
 	// 子类中节点的总数目
 	protected int N;
 	// 子类中N个节点的线性和

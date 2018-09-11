@@ -2,11 +2,9 @@ package com.jusdt.datamining.integrated.cba;
 
 /**
  * 频繁项集
- *
- * @author lyq
- *
  */
 public class FrequentItem implements Comparable<FrequentItem> {
+
 	// 频繁项集的集合ID
 	private String[] idArray;
 	// 频繁项集的支持度计数

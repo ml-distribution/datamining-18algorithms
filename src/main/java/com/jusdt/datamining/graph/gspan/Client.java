@@ -2,8 +2,6 @@ package com.jusdt.datamining.graph.gspan;
 
 /**
  * gSpan频繁子图挖掘算法
- * @author lyq
- *
  */
 public class Client {
 

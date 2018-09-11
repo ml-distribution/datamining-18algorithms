@@ -2,11 +2,9 @@ package com.jusdt.datamining.others.bayesnetwork;
 
 /**
  * 贝叶斯网络场景测试类
- *
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String dataFilePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
 		String attachFilePath = "C:\\Users\\lyq\\Desktop\\icon\\attach.txt";
@@ -26,4 +24,5 @@ public class Client {
 			System.out.println(String.format("事件%s发生的概率为%s", queryStr, result));
 		}
 	}
+
 }

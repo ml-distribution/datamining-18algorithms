@@ -10,11 +10,9 @@ import java.util.LinkedList;
 
 /**
  * BIRCH聚类算法工具类
- *
- * @author lyq
- *
  */
 public class BIRCHTool {
+
 	// 节点类型名称
 	public static final String NON_LEAFNODE = "【NonLeafNode】";
 	public static final String LEAFNODE = "【LeafNode】";

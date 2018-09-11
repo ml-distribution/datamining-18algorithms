@@ -2,10 +2,9 @@ package com.jusdt.datamining.others.kdtree;
 
 /**
  * KD树节点
- * @author lyq
- *
  */
 public class TreeNode {
+
 	//数据矢量
 	Point nodeData;
 	//分割平面的分割线
@@ -24,4 +23,5 @@ public class TreeNode {
 	public TreeNode() {
 		this.isVisited = false;
 	}
+
 }

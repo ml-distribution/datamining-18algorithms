@@ -7,11 +7,9 @@ import java.util.Map;
 
 /**
  * 数据记录，包含这条记录所有属性
- *
- * @author lyq
- *
  */
 public class Record {
+
 	// 记录名称
 	private String name;
 	// 记录属性键值对

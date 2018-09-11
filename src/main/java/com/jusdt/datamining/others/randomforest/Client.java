@@ -4,11 +4,9 @@ import java.text.MessageFormat;
 
 /**
  * 随机森林算法测试场景
- *
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
 		String queryStr = "Age=Youth,Income=Low,Student=No,CreditRating=Fair";
@@ -26,4 +24,5 @@ public class Client {
 		System.out.println();
 		System.out.println(MessageFormat.format("查询属性描述{0},预测的分类结果为BuysCompute:{1}", queryStr, resultClassType));
 	}
+
 }

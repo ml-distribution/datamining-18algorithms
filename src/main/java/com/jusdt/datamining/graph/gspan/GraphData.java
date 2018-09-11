@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 图的数据类
- *
- * @author lyq
- *
  */
 public class GraphData {
+
 	// 节点组标号
 	private ArrayList<Integer> nodeLabels;
 	// 节点是否可用,可能被移除

@@ -6,11 +6,9 @@ import java.util.Map;
 
 /**
  * 数据记录集合，包含一些共同的属性
- *
- * @author lyq
- *
  */
 public class RecordCollection {
+
 	// 集合包含的属性
 	private HashMap<String, String> attrValues;
 	// 数据记录列表

@@ -2,11 +2,9 @@ package com.jusdt.datamining.others.viterbi;
 
 /**
  * 维特比算法
- *
- * @author lyq
- *
  */
 public class Client {
+
 	public static void main(String[] args) {
 		// 状态转移概率矩阵路径
 		String stmFilePath;
@@ -27,4 +25,5 @@ public class Client {
 		tool = new ViterbiTool(stmFilePath, cfFilePath, initStatePro, observeStates);
 		tool.calHMMObserve();
 	}
+
 }

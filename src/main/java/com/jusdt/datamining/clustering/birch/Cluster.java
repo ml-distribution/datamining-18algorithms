@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 叶子节点中的小集群
- * @author lyq
- *
  */
 public class Cluster extends ClusteringFeature {
+
 	//集群中的数据点
 	private ArrayList<double[]> data;
 	//父亲节点

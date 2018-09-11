@@ -9,11 +9,9 @@ import java.util.ArrayList;
 
 /**
  * 基于连通图的分裂聚类算法
- *
- * @author lyq
- *
  */
 public class CABDDCCTool {
+
 	// 测试数据点数据
 	private String filePath;
 	// 连通图距离阈值l

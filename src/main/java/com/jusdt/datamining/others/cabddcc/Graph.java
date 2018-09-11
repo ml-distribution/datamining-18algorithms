@@ -5,11 +5,9 @@ import java.util.Collections;
 
 /**
  * 连通图类
- *
- * @author lyq
- *
  */
 public class Graph {
+
 	// 坐标点之间的连接属性，括号内为坐标id号
 	int[][] edges;
 	// 连通图内的坐标点数

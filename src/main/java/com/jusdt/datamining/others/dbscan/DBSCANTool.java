@@ -9,11 +9,9 @@ import java.util.ArrayList;
 
 /**
  * DBSCAN基于密度聚类算法工具类
- *
- * @author lyq
- *
  */
 public class DBSCANTool {
+
 	// 测试数据文件地址
 	private String filePath;
 	// 簇扫描半径

@@ -1,6 +1,7 @@
 package com.jusdt.datamining.classification.cart;
 
 public class Client {
+
 	public static void main(String[] args) {
 		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
 
@@ -8,4 +9,5 @@ public class Client {
 
 		tool.startBuildingTree();
 	}
+
 }

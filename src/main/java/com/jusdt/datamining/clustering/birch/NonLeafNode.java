@@ -5,11 +5,9 @@ import java.util.LinkedList;
 
 /**
  * 非叶子节点
- *
- * @author lyq
- *
  */
 public class NonLeafNode extends ClusteringFeature {
+
 	// 非叶子节点的孩子节点可能为非叶子节点，也可能为叶子节点
 	private ArrayList<NonLeafNode> nonLeafChilds;
 	// 如果是叶子节点的孩子，则以双向链表的形式存在

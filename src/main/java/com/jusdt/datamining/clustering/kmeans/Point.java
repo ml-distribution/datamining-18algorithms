@@ -2,11 +2,9 @@ package com.jusdt.datamining.clustering.kmeans;
 
 /**
  * 坐标点类
- *
- * @author lyq
- *
  */
 public class Point implements Comparable<Point> {
+
 	// 坐标点横坐标
 	private double x;
 	// 坐标点纵坐标

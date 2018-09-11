@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * FP树节点
- *
- * @author lyq
- *
  */
 public class TreeNode implements Comparable<TreeNode>, Cloneable {
+
 	// 节点类别名称
 	private String name;
 	// 计数数量

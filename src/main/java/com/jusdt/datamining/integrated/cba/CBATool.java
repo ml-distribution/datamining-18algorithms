@@ -9,11 +9,9 @@ import java.util.HashMap;
 
 /**
  * CBA算法(关联规则分类)工具类
- *
- * @author lyq
- *
  */
 public class CBATool {
+
 	// 年龄的类别划分
 	public final String AGE = "Age";
 	public final String AGE_YOUNG = "Young";

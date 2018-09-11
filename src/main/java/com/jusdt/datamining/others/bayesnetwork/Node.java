@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 贝叶斯网络节点类
- *
- * @author lyq
- *
  */
 public class Node {
+
 	// 节点的属性名称
 	String name;
 	// 节点的父亲节点，也就是上游节点，可能多个

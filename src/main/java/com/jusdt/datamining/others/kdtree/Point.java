@@ -2,11 +2,9 @@ package com.jusdt.datamining.others.kdtree;
 
 /**
  * 坐标点类
- *
- * @author lyq
- *
  */
 public class Point {
+
 	// 坐标点横坐标
 	Double x;
 	// 坐标点纵坐标

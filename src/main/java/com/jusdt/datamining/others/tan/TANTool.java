@@ -10,11 +10,9 @@ import java.util.HashMap;
 
 /**
  * TAN树型朴素贝叶斯算法工具类
- *
- * @author lyq
- *
  */
 public class TANTool {
+
 	// 测试数据集地址
 	private String filePath;
 	// 数据集属性总数,其中一个个分类属性
