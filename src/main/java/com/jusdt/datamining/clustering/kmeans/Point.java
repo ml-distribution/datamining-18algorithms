@@ -77,7 +77,6 @@ public class Point implements Comparable<Point> {
 
 	@Override
 	public int compareTo(Point o) {
-		// TODO Auto-generated method stub
 		return this.distance.compareTo(o.distance);
 	}
 

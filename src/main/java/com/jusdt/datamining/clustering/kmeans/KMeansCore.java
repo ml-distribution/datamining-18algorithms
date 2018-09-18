@@ -11,7 +11,7 @@ import java.util.Collections;
 /**
  * k均值算法工具类
  */
-public class KMeansTool {
+public class KMeansCore {
 
 	// 输入数据文件地址
 	private String filePath;
@@ -24,7 +24,7 @@ public class KMeansTool {
 	// 所有的数据左边点
 	private ArrayList<Point> totalPoints;
 
-	public KMeansTool(String filePath, int classNum) {
+	public KMeansCore(String filePath, int classNum) {
 		this.filePath = filePath;
 		this.classNum = classNum;
 		readDataFile();
