@@ -3,11 +3,11 @@ package com.jusdt.datamining.others.bayesnetwork;
 /**
  * 贝叶斯网络场景测试类
  */
-public class Client {
+public class BayesNetWorkExample {
 
 	public static void main(String[] args) {
-		String dataFilePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
-		String attachFilePath = "C:\\Users\\lyq\\Desktop\\icon\\attach.txt";
+		String dataFilePath = "data/bayesnetwork/input.txt";
+		String attachFilePath = "data/bayesnetwork/attach.txt";
 		// 查询串语句
 		String queryStr;
 		// 结果概率
@@ -15,7 +15,7 @@ public class Client {
 
 		// 查询语句的描述的事件是地震发生了，导致响铃响了，导致接到Mary的电话
 		queryStr = "E=y,A=y,M=y";
-		BayesNetWorkTool tool = new BayesNetWorkTool(dataFilePath, attachFilePath);
+		BayesNetWorkCore tool = new BayesNetWorkCore(dataFilePath, attachFilePath);
 		result = tool.calProByNetWork(queryStr);
 
 		if (result == -1) {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * 基于连通图的分裂聚类算法
  */
-public class CABDDCCTool {
+public class CABDDCCCore {
 
 	// 测试数据点数据
 	private String filePath;
@@ -23,7 +23,7 @@ public class CABDDCCTool {
 	// 连通图
 	private Graph graph;
 
-	public CABDDCCTool(String filePath, int length) {
+	public CABDDCCCore(String filePath, int length) {
 		this.filePath = filePath;
 		this.length = length;
 

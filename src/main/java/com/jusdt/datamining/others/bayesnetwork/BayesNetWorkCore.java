@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * 贝叶斯网络算法工具类
  */
-public class BayesNetWorkTool {
+public class BayesNetWorkCore {
 
 	// 联合概率分布数据文件地址
 	private String dataFilePath;
@@ -27,7 +27,7 @@ public class BayesNetWorkTool {
 	// 属性名与列数之间的对应关系
 	private HashMap<String, Integer> attr2Column;
 
-	public BayesNetWorkTool(String dataFilePath, String attachFilePath) {
+	public BayesNetWorkCore(String dataFilePath, String attachFilePath) {
 		this.dataFilePath = dataFilePath;
 		this.attachFilePath = attachFilePath;
 

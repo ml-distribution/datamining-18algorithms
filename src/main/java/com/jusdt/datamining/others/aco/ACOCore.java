@@ -14,7 +14,7 @@ import java.util.Random;
 /**
  * 蚁群算法工具类
  */
-public class ACOTool {
+public class ACOCore {
 
 	// 输入数据类型
 	public static final int INPUT_CITY_NAME = 1;
@@ -47,7 +47,7 @@ public class ACOTool {
 	// 信息素矩阵存储图,key采用的格式(i,j,t)->value
 	private Map<String, Double> pheromoneTimeMap;
 
-	public ACOTool(String filePath, int antNum, double alpha, double beita, double p, double Q) {
+	public ACOCore(String filePath, int antNum, double alpha, double beita, double p, double Q) {
 		this.filePath = filePath;
 		this.antNum = antNum;
 		this.alpha = alpha;

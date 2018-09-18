@@ -43,7 +43,7 @@ public class Ant implements Comparable<Ant> {
 			currentCity = currentPath.get(i + 1);
 
 			// 通过距离矩阵进行计算
-			sumDistance += ACOTool.disMatrix[Integer.parseInt(lastCity)][Integer.parseInt(currentCity)];
+			sumDistance += ACOCore.disMatrix[Integer.parseInt(lastCity)][Integer.parseInt(currentCity)];
 		}
 
 		return sumDistance;

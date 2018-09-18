@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Chameleon 两阶段聚类算法工具类
  */
-public class ChameleonTool {
+public class ChameleonCore {
 
 	// 测试数据点文件地址
 	private String filePath;
@@ -31,7 +31,7 @@ public class ChameleonTool {
 	// 结果簇结合
 	private ArrayList<Cluster> resultClusters;
 
-	public ChameleonTool(String filePath, int k, double minMetric) {
+	public ChameleonCore(String filePath, int k, double minMetric) {
 		this.filePath = filePath;
 		this.k = k;
 		this.minMetric = minMetric;

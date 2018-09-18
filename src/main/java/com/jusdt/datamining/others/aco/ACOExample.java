@@ -3,11 +3,11 @@ package com.jusdt.datamining.others.aco;
 /**
  * 蚁群算法测试类
  */
-public class Client {
+public class ACOExample {
 
 	public static void main(String[] args) {
 		//测试数据
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/aco/input.txt";
 		//蚂蚁数量
 		int antNum;
 		//蚁群算法迭代次数
@@ -25,7 +25,7 @@ public class Client {
 		Q = 5;
 		loopCount = 5;
 
-		ACOTool tool = new ACOTool(filePath, antNum, alpha, beita, p, Q);
+		ACOCore tool = new ACOCore(filePath, antNum, alpha, beita, p, Q);
 		tool.antStartSearching(loopCount);
 	}
 

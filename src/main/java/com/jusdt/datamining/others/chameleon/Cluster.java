@@ -35,8 +35,8 @@ public class Cluster implements Cloneable {
 				id2 = p2.id;
 
 				// 为了避免重复计算，取id1小的对应大的
-				if (id1 < id2 && ChameleonTool.edges[id1][id2] == 1) {
-					weightSum += ChameleonTool.weights[id1][id2];
+				if (id1 < id2 && ChameleonCore.edges[id1][id2] == 1) {
+					weightSum += ChameleonCore.weights[id1][id2];
 				}
 			}
 		}

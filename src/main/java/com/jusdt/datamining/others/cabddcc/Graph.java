@@ -263,8 +263,8 @@ public class Graph {
 		for (int i = 0; i < edges.length; i++) {
 			for (int j = 0; j < edges[0].length; j++) {
 				if (edges[i][j] == 1) {
-					p1 = CABDDCCTool.totalPoints.get(i);
-					p2 = CABDDCCTool.totalPoints.get(j);
+					p1 = CABDDCCCore.totalPoints.get(i);
+					p2 = CABDDCCCore.totalPoints.get(j);
 
 					if (!pointList.contains(p1)) {
 						pointList.add(p1);
