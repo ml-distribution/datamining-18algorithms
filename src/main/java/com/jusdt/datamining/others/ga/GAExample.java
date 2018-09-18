@@ -3,7 +3,7 @@ package com.jusdt.datamining.others.ga;
 /**
  * Genetic遗传算法测试类
  */
-public class Client {
+public class GAExample {
 
 	public static void main(String[] args) {
 		//变量最小值和最大值
@@ -12,7 +12,7 @@ public class Client {
 		//初始群体规模
 		int initSetsNum = 4;
 
-		GATool tool = new GATool(minNum, maxNum, initSetsNum);
+		GACore tool = new GACore(minNum, maxNum, initSetsNum);
 		tool.geneticCal();
 	}
 

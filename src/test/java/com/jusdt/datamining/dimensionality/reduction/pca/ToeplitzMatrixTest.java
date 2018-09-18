@@ -1,4 +1,6 @@
-package com.jusdt.datamining.pca;
+package com.jusdt.datamining.dimensionality.reduction.pca;
+
+import com.jusdt.datamining.dimensionality.reduction.pca.ToeplitzMatrix;
 
 import junit.framework.TestCase;
 

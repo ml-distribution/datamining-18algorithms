@@ -1,4 +1,4 @@
-package com.jusdt.datamining.pca;
+package com.jusdt.datamining.dimensionality.reduction.pca;
 
 import java.io.FileReader;
 import java.io.FileWriter;

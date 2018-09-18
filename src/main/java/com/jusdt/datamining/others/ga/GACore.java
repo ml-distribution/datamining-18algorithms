@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * 遗传算法工具类
  */
-public class GATool {
+public class GACore {
 
 	// 变量最小值
 	private int minNum;
@@ -21,7 +21,7 @@ public class GATool {
 	// 初始群体
 	private ArrayList<int[]> initSets;
 
-	public GATool(int minNum, int maxNum, int initSetsNum) {
+	public GACore(int minNum, int maxNum, int initSetsNum) {
 		this.minNum = minNum;
 		this.maxNum = maxNum;
 		this.initSetsNum = initSetsNum;

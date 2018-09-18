@@ -12,7 +12,7 @@ import java.util.Stack;
 /**
  * KD树-k维空间关键数据检索算法工具类
  */
-public class KDTreeTool {
+public class KDTreeCore {
 
 	// 空间平面的方向
 	public static final int DIRECTION_X = 0;
@@ -25,7 +25,7 @@ public class KDTreeTool {
 	// KD树根节点
 	private TreeNode rootNode;
 
-	public KDTreeTool(String filePath) {
+	public KDTreeCore(String filePath) {
 		this.filePath = filePath;
 
 		readDataFile();

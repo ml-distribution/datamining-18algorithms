@@ -1,4 +1,4 @@
-package com.jusdt.datamining.pca;
+package com.jusdt.datamining.dimensionality.reduction.pca;
 
 /**
  * 实时矩阵的EVD数据模型

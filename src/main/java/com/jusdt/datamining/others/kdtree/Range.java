@@ -80,7 +80,7 @@ public class Range {
 	public static Range initLeftRange(Point p, int dir) {
 		Range range = new Range();
 
-		if (dir == KDTreeTool.DIRECTION_X) {
+		if (dir == KDTreeCore.DIRECTION_X) {
 			range.right = p.x;
 		} else {
 			range.bottom = p.y;
@@ -101,7 +101,7 @@ public class Range {
 	public static Range initRightRange(Point p, int dir) {
 		Range range = new Range();
 
-		if (dir == KDTreeTool.DIRECTION_X) {
+		if (dir == KDTreeCore.DIRECTION_X) {
 			range.left = p.x;
 		} else {
 			range.top = p.y;

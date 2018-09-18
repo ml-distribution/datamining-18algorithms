@@ -1,4 +1,4 @@
-package com.jusdt.datamining.pca;
+package com.jusdt.datamining.dimensionality.reduction.pca;
 
 /**
  * Create a trajectory style matrix from a vector.

@@ -1,4 +1,4 @@
-package com.jusdt.datamining.pca;
+package com.jusdt.datamining.dimensionality.reduction.pca;
 
 /**
  * 封装PCACore的调用类

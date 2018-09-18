@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * DBSCAN基于密度聚类算法工具类
  */
-public class DBSCANTool {
+public class DBSCANCore {
 
 	// 测试数据文件地址
 	private String filePath;
@@ -25,7 +25,7 @@ public class DBSCANTool {
 	//噪声数据
 	private ArrayList<Point> noisePoint;
 
-	public DBSCANTool(String filePath, double eps, int minPts) {
+	public DBSCANCore(String filePath, double eps, int minPts) {
 		this.filePath = filePath;
 		this.eps = eps;
 		this.minPts = minPts;

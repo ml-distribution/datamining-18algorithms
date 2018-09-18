@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 基于多支持度的Apriori算法工具类
  */
-public class MSAprioriTool {
+public class MSAprioriCore {
 
 	// 前件判断的结果值，用于关联规则的推导
 	public static final int PREFIX_NOT_SUB = -1;
@@ -57,7 +57,7 @@ public class MSAprioriTool {
 	 * @param mis
 	 * @param isTransaction
 	 */
-	public MSAprioriTool(String filePath, double minConf, double delta, double[] mis, boolean isTransaction) {
+	public MSAprioriCore(String filePath, double minConf, double delta, double[] mis, boolean isTransaction) {
 		this.filePath = filePath;
 		this.minConf = minConf;
 		this.delta = delta;
@@ -76,7 +76,7 @@ public class MSAprioriTool {
 	 * @param minSup
 	 * @param isTransaction
 	 */
-	public MSAprioriTool(String filePath, double minConf, double minSup, boolean isTransaction) {
+	public MSAprioriCore(String filePath, double minConf, double minSup, boolean isTransaction) {
 		this.filePath = filePath;
 		this.minConf = minConf;
 		this.minSup = minSup;

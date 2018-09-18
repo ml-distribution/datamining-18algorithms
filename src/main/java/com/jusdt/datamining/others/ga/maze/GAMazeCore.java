@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * 遗传算法在走迷宫游戏的应用-遗传算法工具类
  */
-public class GATool {
+public class GAMazeCore {
 
 	// 迷宫出入口标记
 	public static final int MAZE_ENTRANCE_POS = 1;
@@ -40,7 +40,7 @@ public class GATool {
 	// 随机数产生器
 	private Random random;
 
-	public GATool(String filePath, int initSetsNum) {
+	public GAMazeCore(String filePath, int initSetsNum) {
 		this.filePath = filePath;
 		this.initSetsNum = initSetsNum;
 

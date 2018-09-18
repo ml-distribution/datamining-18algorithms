@@ -5,13 +5,13 @@ import java.text.MessageFormat;
 /**
  * KD树算法测试类
  */
-public class Client {
+public class KDTreeExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/kdtree/input.txt";
 		Point queryNode;
 		Point searchedNode;
-		KDTreeTool tool = new KDTreeTool(filePath);
+		KDTreeCore tool = new KDTreeCore(filePath);
 
 		// 进行KD树的构建
 		tool.createKDTree();

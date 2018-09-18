@@ -3,15 +3,15 @@ package com.jusdt.datamining.others.ga.maze;
 /**
  * 遗传算法在走迷宫游戏的应用
  */
-public class Client {
+public class GAMazeExample {
 
 	public static void main(String[] args) {
 		//迷宫地图文件数据地址
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\mapData.txt";
+		String filePath = "data/maze/mapData.txt";
 		//初始个体数量
-		int initSetsNum = 4;
+		int initSetsNum = 10;
 
-		GATool tool = new GATool(filePath, initSetsNum);
+		GAMazeCore tool = new GAMazeCore(filePath, initSetsNum);
 		tool.goOutMaze();
 	}
 
