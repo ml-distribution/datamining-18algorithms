@@ -3,10 +3,10 @@ package com.jusdt.datamining.sequential.patterns.gsp;
 /**
  * GSP序列模式分析算法
  */
-public class Client {
+public class GSPExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\testInput.txt";
+		String filePath = "data/gsp/testInput.txt";
 		//最小支持度阈值
 		int minSupportCount = 2;
 		//时间最小间隔
@@ -14,7 +14,7 @@ public class Client {
 		//施加最大间隔
 		int max_gap = 5;
 
-		GSPTool tool = new GSPTool(filePath, minSupportCount, min_gap, max_gap);
+		GSPCore tool = new GSPCore(filePath, minSupportCount, min_gap, max_gap);
 		tool.gspCalculate();
 	}
 

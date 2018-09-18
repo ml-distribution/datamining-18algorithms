@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * PrefixSpanTool序列模式分析算法工具类
  */
-public class PrefixSpanTool {
+public class PrefixSpanCore {
 
 	// 测试数据文件地址
 	private String filePath;
@@ -27,7 +27,7 @@ public class PrefixSpanTool {
 	// 所有的单一项，用于递归枚举
 	private ArrayList<String> singleItems;
 
-	public PrefixSpanTool(String filePath, double minSupportRate) {
+	public PrefixSpanCore(String filePath, double minSupportRate) {
 		this.filePath = filePath;
 		this.minSupportRate = minSupportRate;
 		readDataFile();

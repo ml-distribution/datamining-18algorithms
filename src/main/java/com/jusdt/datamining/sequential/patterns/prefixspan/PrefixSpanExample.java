@@ -3,14 +3,14 @@ package com.jusdt.datamining.sequential.patterns.prefixspan;
 /**
  * PrefixSpan序列模式挖掘算法
  */
-public class Client {
+public class PrefixSpanExample {
 
 	public static void main(String[] agrs) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/prefixspan/input.txt";
 		//最小支持度阈值率
 		double minSupportRate = 0.4;
 
-		PrefixSpanTool tool = new PrefixSpanTool(filePath, minSupportRate);
+		PrefixSpanCore tool = new PrefixSpanCore(filePath, minSupportRate);
 		tool.prefixSpanCalculate();
 	}
 

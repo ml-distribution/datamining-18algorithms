@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * EM最大期望算法工具类
  */
-public class EMTool {
+public class EMCore {
 
 	// 测试数据文件地址
 	private String dataFilePath;
@@ -23,7 +23,7 @@ public class EMTool {
 	// 目标C2点
 	private Point p2;
 
-	public EMTool(String dataFilePath) {
+	public EMCore(String dataFilePath) {
 		this.dataFilePath = dataFilePath;
 		pointArray = new ArrayList<>();
 	}

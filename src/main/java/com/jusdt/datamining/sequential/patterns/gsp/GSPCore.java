@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * GSP序列模式分析算法
  */
-public class GSPTool {
+public class GSPCore {
 
 	// 测试数据文件地址
 	private String filePath;
@@ -29,7 +29,7 @@ public class GSPTool {
 	// 序列项数字对时间的映射图容器
 	private ArrayList<ArrayList<HashMap<Integer, Integer>>> itemNum2Time;
 
-	public GSPTool(String filePath, int minSupportCount, int min_gap, int max_gap) {
+	public GSPCore(String filePath, int minSupportCount, int min_gap, int max_gap) {
 		this.filePath = filePath;
 		this.minSupportCount = minSupportCount;
 		this.min_gap = min_gap;
