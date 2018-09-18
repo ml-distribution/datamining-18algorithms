@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * ID3算法实现类
  */
-public class ID3Tool {
+public class ID3Core {
 
 	// 类标号的值类型
 	private final String YES = "Yes";
@@ -26,7 +26,7 @@ public class ID3Tool {
 	// 每个属性的值所有类型
 	private HashMap<String, ArrayList<String>> attrValue;
 
-	public ID3Tool(String filePath) {
+	public ID3Core(String filePath) {
 		this.filePath = filePath;
 		attrValue = new HashMap<>();
 	}
