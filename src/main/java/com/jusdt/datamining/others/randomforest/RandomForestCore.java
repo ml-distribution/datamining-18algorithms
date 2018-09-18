@@ -12,7 +12,7 @@ import java.util.Random;
 /**
  * 随机森林算法工具类
  */
-public class RandomForestTool {
+public class RandomForestCore {
 
 	// 测试数据文件地址
 	private String filePath;
@@ -35,7 +35,7 @@ public class RandomForestTool {
 	// 决策树森林
 	private ArrayList<DecisionTree> decisionForest;
 
-	public RandomForestTool(String filePath, double sampleNumRatio, double featureNumRatio) {
+	public RandomForestCore(String filePath, double sampleNumRatio, double featureNumRatio) {
 		this.filePath = filePath;
 		this.sampleNumRatio = sampleNumRatio;
 		this.featureNumRatio = featureNumRatio;

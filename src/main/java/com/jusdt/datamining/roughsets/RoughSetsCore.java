@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 粗糙集属性约简算法工具类
  */
-public class RoughSetsTool {
+public class RoughSetsCore {
 
 	// 决策属性名称
 	public static String DECISION_ATTR_NAME;
@@ -29,7 +29,7 @@ public class RoughSetsTool {
 	// 属性记录集合
 	private ArrayList<RecordCollection> collectionList;
 
-	public RoughSetsTool(String filePath) {
+	public RoughSetsCore(String filePath) {
 		this.filePath = filePath;
 		readDataFile();
 	}

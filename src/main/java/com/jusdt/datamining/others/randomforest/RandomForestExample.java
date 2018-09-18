@@ -5,10 +5,10 @@ import java.text.MessageFormat;
 /**
  * 随机森林算法测试场景
  */
-public class Client {
+public class RandomForestExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/randomforest/input.txt";
 		String queryStr = "Age=Youth,Income=Low,Student=No,CreditRating=Fair";
 		String resultClassType = "";
 		// 决策树的样本占总数的占比率
@@ -16,7 +16,7 @@ public class Client {
 		// 样本数据的采集特征数量占总特征的比例
 		double featureNumRatio = 0.5;
 
-		RandomForestTool tool = new RandomForestTool(filePath, sampleNumRatio, featureNumRatio);
+		RandomForestCore tool = new RandomForestCore(filePath, sampleNumRatio, featureNumRatio);
 		tool.constructRandomTree();
 
 		resultClassType = tool.judgeClassType(queryStr);

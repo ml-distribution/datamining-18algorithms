@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * 维特比算法工具类
  */
-public class ViterbiTool {
+public class ViterbiCore {
 
 	// 状态转移概率矩阵文件地址
 	private String stmFilePath;
@@ -33,7 +33,7 @@ public class ViterbiTool {
 	// 列坐标属性值映射图
 	private HashMap<Integer, String> index2name;
 
-	public ViterbiTool(String stmFilePath, String confusionFilePath, double[] initStatePro, String[] observeStates) {
+	public ViterbiCore(String stmFilePath, String confusionFilePath, double[] initStatePro, String[] observeStates) {
 		this.stmFilePath = stmFilePath;
 		this.confusionFilePath = confusionFilePath;
 		this.initStatePro = initStatePro;

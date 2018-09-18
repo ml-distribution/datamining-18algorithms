@@ -3,7 +3,7 @@ package com.jusdt.datamining.others.viterbi;
 /**
  * 维特比算法
  */
-public class Client {
+public class ViterbiExample {
 
 	public static void main(String[] args) {
 		// 状态转移概率矩阵路径
@@ -14,15 +14,15 @@ public class Client {
 		String[] observeStates;
 		// 初始状态
 		double[] initStatePro;
-		ViterbiTool tool;
+		ViterbiCore tool;
 
-		stmFilePath = "C:\\Users\\lyq\\Desktop\\icon\\stmatrix.txt";
-		cfFilePath = "C:\\Users\\lyq\\Desktop\\icon\\humidity-matrix.txt";
+		stmFilePath = "data/viterbi/stmatrix.txt";
+		cfFilePath = "data/viterbi/humidity-matrix.txt";
 
 		initStatePro = new double[] { 0.63, 0.17, 0.20 };
 		observeStates = new String[] { "Dry", "Damp", "Soggy" };
 
-		tool = new ViterbiTool(stmFilePath, cfFilePath, initStatePro, observeStates);
+		tool = new ViterbiCore(stmFilePath, cfFilePath, initStatePro, observeStates);
 		tool.calHMMObserve();
 	}
 

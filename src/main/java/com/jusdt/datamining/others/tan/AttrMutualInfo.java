@@ -20,7 +20,6 @@ public class AttrMutualInfo implements Comparable<AttrMutualInfo> {
 
 	@Override
 	public int compareTo(AttrMutualInfo o) {
-		// TODO Auto-generated method stub
 		return o.value.compareTo(this.value);
 	}
 

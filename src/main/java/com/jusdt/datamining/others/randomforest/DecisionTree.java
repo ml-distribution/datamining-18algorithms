@@ -16,13 +16,13 @@ public class DecisionTree {
 	// 这棵树所包含的数据
 	ArrayList<String[]> datas;
 	// 决策树构造的的工具类
-	CARTTool tool;
+	CARTCore tool;
 
 	public DecisionTree(ArrayList<String[]> datas) {
 		this.datas = datas;
 		this.featureNames = datas.get(0);
 
-		tool = new CARTTool(datas);
+		tool = new CARTCore(datas);
 		// 通过CART工具类进行决策树的构建，并返回树的根节点
 		rootNode = tool.startBuildingTree();
 	}

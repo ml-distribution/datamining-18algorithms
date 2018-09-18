@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * TAN树型朴素贝叶斯算法工具类
  */
-public class TANTool {
+public class TANCore {
 
 	// 测试数据集地址
 	private String filePath;
@@ -32,7 +32,7 @@ public class TANTool {
 	// 总的测试数据
 	private ArrayList<String[]> totalDatas;
 
-	public TANTool(String filePath) {
+	public TANCore(String filePath) {
 		this.filePath = filePath;
 
 		readDataFile();

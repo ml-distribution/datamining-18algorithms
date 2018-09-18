@@ -3,10 +3,10 @@ package com.jusdt.datamining.others.tan;
 /**
  * TAN树型朴素贝叶斯算法
  */
-public class Client {
+public class TanExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/tan/input.txt";
 		// 条件查询语句
 		String queryStr;
 		// 分类结果概率1
@@ -14,7 +14,7 @@ public class Client {
 		// 分类结果概率2
 		double classResult2;
 
-		TANTool tool = new TANTool(filePath);
+		TANCore tool = new TANCore(filePath);
 		queryStr = "OutLook=Sunny,Temperature=Hot,Humidity=High,Wind=Weak,PlayTennis=No";
 		classResult1 = tool.calHappenedPro(queryStr);
 

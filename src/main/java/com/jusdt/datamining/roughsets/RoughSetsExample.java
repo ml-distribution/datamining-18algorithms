@@ -3,12 +3,12 @@ package com.jusdt.datamining.roughsets;
 /**
  * 粗糙集约简算法
  */
-public class Client {
+public class RoughSetsExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/roughsets/input.txt";
 
-		RoughSetsTool tool = new RoughSetsTool(filePath);
+		RoughSetsCore tool = new RoughSetsCore(filePath);
 		tool.findingReduct();
 	}
 
