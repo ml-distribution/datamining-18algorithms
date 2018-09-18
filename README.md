@@ -3,7 +3,7 @@
 > 基于Java8实现。
 
 ## 算法目录
-#### 18大DM算法
+#### 常用的标准数据挖掘算法
 包名 | 目录名 | 算法名 |
 -----| ------ |--------|
 AssociationAnalysis | DataMining_Apriori | Apriori-关联规则挖掘算法
@@ -25,7 +25,7 @@ SequentialPatterns | DataMining_PrefixSpan | PrefixSpan-序列模式分析算法
 StatisticalLearning | DataMining_EM | EM-期望最大化算法
 StatisticalLearning | DataMining_SVM | SVM-支持向量机算法
 
-#### 其他经典DM算法
+#### 其他辅助的数据挖掘算法
 包名 | 目录名 | 算法名 |
 -----| ------ |--------|
 Others | DataMining_ACO | ACO-蚁群算法
@@ -41,8 +41,8 @@ Others | DataMining_RandomForest | RandomForest-随机森林算法
 Others | DataMining_TAN | TAN-树型朴素贝叶斯算法
 Others | DataMining_Viterbi | Viterbi-维特比算法
 
-## 18大经典DM算法
-18大数据挖掘的经典算法以及代码实现，涉及到了决策分类，聚类，链接挖掘，关联挖掘，模式挖掘等等方面,后面都是相应算法的博文链接，希望能够帮助大家学。
+## 数据挖掘算法使用说明
+本项目实现的数据挖掘的经典算法以及代码，涉及到了决策分类，聚类，链接挖掘，关联挖掘，模式挖掘等等方面,后面都是相应算法的参考博文链接。
 目前追加了其他的一些经典的DM算法，在others的包中涉及聚类，分类，图算法，搜索算等等，没有具体分类。
 
 * ### C4.5

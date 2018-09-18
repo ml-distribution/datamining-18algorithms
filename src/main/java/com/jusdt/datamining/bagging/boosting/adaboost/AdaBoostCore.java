@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * AdaBoost提升算法工具类
  */
-public class AdaBoostTool {
+public class AdaBoostCore {
 
 	// 分类的类别，程序默认为正类1和负类-1
 	public static final int CLASS_POSITIVE = 1;
@@ -35,7 +35,7 @@ public class AdaBoostTool {
 	// 所有的数据点
 	private ArrayList<Point> totalPoint;
 
-	public AdaBoostTool(String filePath, double errorValue) {
+	public AdaBoostCore(String filePath, double errorValue) {
 		this.filePath = filePath;
 		this.errorValue = errorValue;
 		readDataFile();

@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * FPTree算法工具类
  */
-public class FPTreeTool {
+public class FPTreeCore {
 
 	// 输入数据文件位置
 	private String filePath;
@@ -23,7 +23,7 @@ public class FPTreeTool {
 	// 各个ID的统计数目映射表项，计数用于排序使用
 	private HashMap<String, Integer> itemCountMap;
 
-	public FPTreeTool(String filePath, int minSupportCount) {
+	public FPTreeCore(String filePath, int minSupportCount) {
 		this.filePath = filePath;
 		this.minSupportCount = minSupportCount;
 		readDataFile();

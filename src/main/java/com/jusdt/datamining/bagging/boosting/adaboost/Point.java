@@ -2,7 +2,6 @@ package com.jusdt.datamining.bagging.boosting.adaboost;
 
 /**
  * 坐标点类
- *
  */
 public class Point {
 
