@@ -110,9 +110,9 @@ public class LeafNode extends ClusteringFeature {
 			ArrayList<double[]> data2 = cluster.getData();
 			data1.addAll(data2);
 			// 如果添加后的聚类的簇间距离超过给定阈值，需要额外新建簇
-			if (findedCluster.computerInClusterDistance(data1) > BIRCHTool.T) {
+			if (findedCluster.computerInClusterDistance(data1) > BIRCHCore.T) {
 				// 叶子节点的孩子数不能超过平衡因子L
-				if (clusterChilds.size() + 1 > BIRCHTool.L) {
+				if (clusterChilds.size() + 1 > BIRCHCore.L) {
 					needDivided = true;
 				}
 				clusterChilds.add(cluster);

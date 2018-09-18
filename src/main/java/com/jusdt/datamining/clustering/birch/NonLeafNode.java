@@ -46,7 +46,7 @@ public class NonLeafNode extends ClusteringFeature {
 			leafNode.setParentNode(this);
 		} else {
 			// 如果添加后，叶子节点数超过平衡因子，则添加后需要分裂
-			if (leafChilds.size() + 1 > BIRCHTool.B) {
+			if (leafChilds.size() + 1 > BIRCHCore.B) {
 				needDivided = true;
 			}
 			leafChilds.add(leafNode);
@@ -79,7 +79,7 @@ public class NonLeafNode extends ClusteringFeature {
 			nonLeafNode.setParentNode(this);
 		} else {
 			// 如果添加后，叶子节点数超过平衡因子，则添加失败
-			if (nonLeafChilds.size() + 1 > BIRCHTool.B) {
+			if (nonLeafChilds.size() + 1 > BIRCHCore.B) {
 				needDivided = false;
 			}
 			nonLeafChilds.add(nonLeafNode);

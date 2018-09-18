@@ -54,6 +54,6 @@ public class Cluster extends ClusteringFeature {
 	@Override
 	public void addingCluster(ClusteringFeature clusteringFeature) {
 		// TODO Auto-generated method stub
-
 	}
+
 }

@@ -11,7 +11,7 @@ import java.util.LinkedList;
 /**
  * BIRCH聚类算法工具类
  */
-public class BIRCHTool {
+public class BIRCHCore {
 
 	// 节点类型名称
 	public static final String NON_LEAFNODE = "【NonLeafNode】";
@@ -29,7 +29,7 @@ public class BIRCHTool {
 	// 总的测试数据记录
 	private ArrayList<String[]> totalDataRecords;
 
-	public BIRCHTool(String filePath, int B, int L, double T) {
+	public BIRCHCore(String filePath, int B, int L, double T) {
 		this.filePath = filePath;
 		this.B = B;
 		this.L = L;

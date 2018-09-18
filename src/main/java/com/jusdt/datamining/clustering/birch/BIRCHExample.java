@@ -3,10 +3,10 @@ package com.jusdt.datamining.clustering.birch;
 /**
  * BIRCH聚类算法调用类
  */
-public class Client {
+public class BIRCHExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\testInput.txt";
+		String filePath = "data/birch/testInput.txt";
 		//内部节点平衡因子B
 		int B = 2;
 		//叶子节点平衡因子L
@@ -14,7 +14,7 @@ public class Client {
 		//簇直径阈值T
 		double T = 0.6;
 
-		BIRCHTool tool = new BIRCHTool(filePath, B, L, T);
+		BIRCHCore tool = new BIRCHCore(filePath, B, L, T);
 		tool.startBuilding();
 	}
 
