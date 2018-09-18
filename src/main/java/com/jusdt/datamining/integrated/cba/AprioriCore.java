@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * apriori算法工具类
  */
-public class AprioriTool {
+public class AprioriCore {
 
 	// 最小支持度计数
 	private int minSupportCount;
@@ -20,7 +20,7 @@ public class AprioriTool {
 	// 过程中计算出来频繁项集的ID集合
 	private ArrayList<String[]> resultItemID;
 
-	public AprioriTool(ArrayList<String[]> totalGoodsIDs, int minSupportCount) {
+	public AprioriCore(ArrayList<String[]> totalGoodsIDs, int minSupportCount) {
 		this.totalGoodsIDs = totalGoodsIDs;
 		this.minSupportCount = minSupportCount;
 	}

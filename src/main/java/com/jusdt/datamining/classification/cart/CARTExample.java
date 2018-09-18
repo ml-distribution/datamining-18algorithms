@@ -1,11 +1,11 @@
 package com.jusdt.datamining.classification.cart;
 
-public class Client {
+public class CARTExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/cart/input.txt";
 
-		CARTTool tool = new CARTTool(filePath);
+		CARTCore tool = new CARTCore(filePath);
 
 		tool.startBuildingTree();
 	}

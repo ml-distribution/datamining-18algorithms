@@ -5,11 +5,11 @@ package com.jusdt.datamining.graph.gspan;
  */
 public class EdgeFrequency {
 
-	//节点标号数量
+	// 节点标号数量
 	private int nodeLabelNum;
-	//边的标号数量
+	// 边的标号数量
 	private int edgeLabelNum;
-	//用于存放边计数的3维数组
+	// 用于存放边计数的3维数组
 	public int[][][] edgeFreqCount;
 
 	public EdgeFrequency(int nodeLabelNum, int edgeLabelNum) {

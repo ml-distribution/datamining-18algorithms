@@ -3,11 +3,11 @@ package com.jusdt.datamining.graph.gspan;
 /**
  * gSpan频繁子图挖掘算法
  */
-public class Client {
+public class GSpanExample {
 
 	public static void main(String[] args) {
 		//测试数据文件地址
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/gspan/input.txt";
 		//最小支持度率
 		double minSupportRate = 0.2;
 

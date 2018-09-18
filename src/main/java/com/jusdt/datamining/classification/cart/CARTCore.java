@@ -12,7 +12,7 @@ import java.util.Queue;
 /**
  * CART分类回归树算法工具类
  */
-public class CARTTool {
+public class CARTCore {
 
 	// 类标号的值类型
 	private final String YES = "Yes";
@@ -28,7 +28,7 @@ public class CARTTool {
 	// 每个属性的值所有类型
 	private HashMap<String, ArrayList<String>> attrValue;
 
-	public CARTTool(String filePath) {
+	public CARTCore(String filePath) {
 		this.filePath = filePath;
 		attrValue = new HashMap<>();
 	}

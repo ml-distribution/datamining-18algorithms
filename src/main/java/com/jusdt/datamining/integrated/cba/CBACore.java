@@ -10,7 +10,7 @@ import java.util.HashMap;
 /**
  * CBA算法(关联规则分类)工具类
  */
-public class CBATool {
+public class CBACore {
 
 	// 年龄的类别划分
 	public final String AGE = "Age";
@@ -33,12 +33,12 @@ public class CBATool {
 	// 用二维数组保存测试数据
 	private ArrayList<String[]> totalDatas;
 	// Apriori算法工具类
-	private AprioriTool aprioriTool;
+	private AprioriCore aprioriTool;
 	// 属性到数字的映射图
 	private HashMap<String, Integer> attr2Num;
 	private HashMap<Integer, String> num2Attr;
 
-	public CBATool(String filePath, double minSupportRate, double minConf) {
+	public CBACore(String filePath, double minSupportRate, double minConf) {
 		this.filePath = filePath;
 		this.minConf = minConf;
 		this.minSupportRate = minSupportRate;
@@ -144,7 +144,7 @@ public class CBATool {
 			System.arraycopy(array, 1, tempArray, 0, tempArray.length);
 			copyData.set(i, tempArray);
 		}
-		aprioriTool = new AprioriTool(copyData, minSupportCount);
+		aprioriTool = new AprioriCore(copyData, minSupportCount);
 		aprioriTool.computeLink();
 		totalFrequentItems = aprioriTool.getTotalFrequentItems();
 

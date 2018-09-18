@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * HITS链接分析算法工具类
  */
-public class HITSTool {
+public class HITSCore {
 
 	//输入数据文件地址
 	private String filePath;
@@ -24,7 +24,7 @@ public class HITSTool {
 	//网页种类
 	private ArrayList<String> pageClass;
 
-	public HITSTool(String filePath) {
+	public HITSCore(String filePath) {
 		this.filePath = filePath;
 		readDataFile();
 	}

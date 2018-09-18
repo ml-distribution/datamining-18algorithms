@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * PageRank网页排名算法工具类
  */
-public class PageRankTool {
+public class PageRankCore {
 
 	// 测试输入数据
 	private String filePath;
@@ -24,7 +24,7 @@ public class PageRankTool {
 	// 网页数量分类
 	ArrayList<String> pageClass;
 
-	public PageRankTool(String filePath) {
+	public PageRankCore(String filePath) {
 		this.filePath = filePath;
 		readDataFile();
 	}

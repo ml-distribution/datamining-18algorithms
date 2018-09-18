@@ -3,12 +3,12 @@ package com.jusdt.datamining.link.hits;
 /**
  * HITS链接分析算法
  */
-public class Client {
+public class HITSExample {
 
 	public static void main(String[] args) {
-		String filePath = "C:\\Users\\lyq\\Desktop\\icon\\input.txt";
+		String filePath = "data/hits/input.txt";
 
-		HITSTool tool = new HITSTool(filePath);
+		HITSCore tool = new HITSCore(filePath);
 		tool.printResultPage();
 	}
 
