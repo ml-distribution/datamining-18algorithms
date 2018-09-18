@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * 朴素贝叶斯算法工具类
  */
-public class NaiveBayesTool {
+public class NaiveBayesCore {
 
 	// 类标记符，这里分为2类，YES和NO
 	private String YES = "Yes";
@@ -27,7 +27,7 @@ public class NaiveBayesTool {
 	// 每个属性的值所有类型
 	private HashMap<String, ArrayList<String>> attrValue;
 
-	public NaiveBayesTool(String filePath) {
+	public NaiveBayesCore(String filePath) {
 		this.filePath = filePath;
 
 		readDataFile();
