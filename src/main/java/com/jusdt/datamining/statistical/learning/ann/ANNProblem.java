@@ -1,11 +1,11 @@
-package com.jusdt.datamining.statistical.learning.svm;
+package com.jusdt.datamining.statistical.learning.ann;
 
 import java.io.Serializable;
 
 /**
  * 包含了训练集数据的基本信息
  */
-public class SVMProblem implements Serializable {
+public class ANNProblem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -14,6 +14,6 @@ public class SVMProblem implements Serializable {
 	//分类类型值数组
 	public double[] y;
 	//训练集向量表
-	public SVMNode[][] x;
+	public ANNNode[][] x;
 
 }

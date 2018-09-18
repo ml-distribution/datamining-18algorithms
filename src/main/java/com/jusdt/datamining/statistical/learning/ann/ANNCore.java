@@ -1,4 +1,4 @@
-package com.jusdt.datamining.statistical.learning.svm;
+package com.jusdt.datamining.statistical.learning.ann;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,16 +9,16 @@ import java.util.List;
 /**
  * SVM支持向量机工具类
  */
-public class SVMCore {
+public class ANNCore {
 
 	// 训练集数据文件路径
 	private String trainDataPath;
 	// svm_problem对象，用于构造svm model模型
-	private SVMProblem sProblem;
+	private ANNProblem sProblem;
 	// svm参数，里面有svm支持向量机的类型和不同 的svm的核函数类型
-	private SVMParameter sParam;
+	private ANNParameter sParam;
 
-	public SVMCore(String trainDataPath) {
+	public ANNCore(String trainDataPath) {
 		this.trainDataPath = trainDataPath;
 
 		// 初始化svm相关变量
@@ -38,13 +38,13 @@ public class SVMCore {
 	 *
 	 * @return
 	 */
-	private SVMProblem initSvmProblem() {
+	private ANNProblem initSvmProblem() {
 		List<Double> label = new ArrayList<Double>();
-		List<SVMNode[]> nodeSet = new ArrayList<SVMNode[]>();
+		List<ANNNode[]> nodeSet = new ArrayList<ANNNode[]>();
 		getData(nodeSet, label, trainDataPath);
 
 		int dataRange = nodeSet.get(0).length;
-		SVMNode[][] datas = new SVMNode[nodeSet.size()][dataRange]; // 训练集的向量表
+		ANNNode[][] datas = new ANNNode[nodeSet.size()][dataRange]; // 训练集的向量表
 		for (int i = 0; i < datas.length; i++) {
 			for (int j = 0; j < dataRange; j++) {
 				datas[i][j] = nodeSet.get(i)[j];
@@ -56,7 +56,7 @@ public class SVMCore {
 		}
 
 		// 定义svm_problem对象
-		SVMProblem problem = new SVMProblem();
+		ANNProblem problem = new ANNProblem();
 		problem.l = nodeSet.size(); // 向量个数
 		problem.x = datas; // 训练集向量表
 		problem.y = lables; // 对应的lable数组
@@ -69,12 +69,12 @@ public class SVMCore {
 	 *
 	 * @return
 	 */
-	private SVMParameter initSvmParam() {
+	private ANNParameter initSvmParam() {
 		// 定义svm_parameter对象
-		SVMParameter param = new SVMParameter();
-		param.svm_type = SVMParameter.EPSILON_SVR;
+		ANNParameter param = new ANNParameter();
+		param.svm_type = ANNParameter.EPSILON_SVR;
 		// 设置svm的核函数类型为线型
-		param.kernel_type = SVMParameter.LINEAR;
+		param.kernel_type = ANNParameter.LINEAR;
 		// 后面的参数配置只针对训练集的数据
 		param.cache_size = 100;
 		param.eps = 0.00001;
@@ -91,11 +91,11 @@ public class SVMCore {
 	public void svmPredictData(String testDataPath) {
 		// 获取测试数据
 		List<Double> testlabel = new ArrayList<Double>();
-		List<SVMNode[]> testnodeSet = new ArrayList<SVMNode[]>();
+		List<ANNNode[]> testnodeSet = new ArrayList<ANNNode[]>();
 		getData(testnodeSet, testlabel, testDataPath);
 		int dataRange = testnodeSet.get(0).length;
 
-		SVMNode[][] testdatas = new SVMNode[testnodeSet.size()][dataRange]; // 训练集的向量表
+		ANNNode[][] testdatas = new ANNNode[testnodeSet.size()][dataRange]; // 训练集的向量表
 		for (int i = 0; i < testdatas.length; i++) {
 			for (int j = 0; j < dataRange; j++) {
 				testdatas[i][j] = testnodeSet.get(i)[j];
@@ -109,10 +109,10 @@ public class SVMCore {
 
 		// 如果参数没有问题，则svm.svm_check_parameter()函数返回null,否则返回error描述。
 		// 对svm的配置参数叫验证，因为有些参数只针对部分的支持向量机的类型
-		System.out.println(SVM.svm_check_parameter(sProblem, sParam));
+		System.out.println(ANN.ann_check_parameter(sProblem, sParam));
 		System.out.println("------------检验参数-----------");
 		// 训练SVM分类模型
-		SVMModel model = SVM.svm_train(sProblem, sParam);
+		ANNModel model = ANN.ann_train(sProblem, sParam);
 
 		// 预测测试数据的lable
 		double err = 0.0;
@@ -120,7 +120,7 @@ public class SVMCore {
 			double truevalue = testlables[i];
 			// 测试数据真实值
 			System.out.print(truevalue + " ");
-			double predictValue = SVM.svm_predict(model, testdatas[i]);
+			double predictValue = ANN.ann_predict(model, testdatas[i]);
 			// 测试数据预测值
 			System.out.println(predictValue);
 		}
@@ -136,7 +136,7 @@ public class SVMCore {
 	 * @param filename
 	 *            数据文件地址
 	 */
-	private void getData(List<SVMNode[]> nodeSet, List<Double> label, String filename) {
+	private void getData(List<ANNNode[]> nodeSet, List<Double> label, String filename) {
 		try {
 
 			FileReader fr = new FileReader(new File(filename));
@@ -144,9 +144,9 @@ public class SVMCore {
 			String line = null;
 			while ((line = br.readLine()) != null) {
 				String[] datas = line.split(",");
-				SVMNode[] vector = new SVMNode[datas.length - 1];
+				ANNNode[] vector = new ANNNode[datas.length - 1];
 				for (int i = 0; i < datas.length - 1; i++) {
-					SVMNode node = new SVMNode();
+					ANNNode node = new ANNNode();
 					node.index = i + 1;
 					node.value = Double.parseDouble(datas[i]);
 					vector[i] = node;

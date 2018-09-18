@@ -1,4 +1,4 @@
-package com.jusdt.datamining.statistical.learning.svm;
+package com.jusdt.datamining.statistical.learning.ann;
 
 import java.io.Serializable;
 
@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author lyq
  *
  */
-public class SVMNode implements Serializable {
+public class ANNNode implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

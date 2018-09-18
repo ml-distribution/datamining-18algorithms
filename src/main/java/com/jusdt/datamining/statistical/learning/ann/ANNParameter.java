@@ -1,8 +1,8 @@
-package com.jusdt.datamining.statistical.learning.svm;
+package com.jusdt.datamining.statistical.learning.ann;
 
 import java.io.Serializable;
 
-public class SVMParameter implements Cloneable, Serializable {
+public class ANNParameter implements Cloneable, Serializable {
 
 	private static final long serialVersionUID = 1L;
 

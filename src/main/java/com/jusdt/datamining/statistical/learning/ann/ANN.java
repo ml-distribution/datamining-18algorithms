@@ -1,4 +1,4 @@
-package com.jusdt.datamining.statistical.learning.svm;
+package com.jusdt.datamining.statistical.learning.ann;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -158,10 +158,10 @@ abstract class QMatrix {
 };
 
 abstract class Kernel extends QMatrix {
-	private SVMNode[][] x;
+	private ANNNode[][] x;
 	private final double[] x_square;
 
-	// svm_parameter
+	// ANN_parameter
 	private final int kernel_type;
 	private final int degree;
 	private final double gamma;
@@ -176,7 +176,7 @@ abstract class Kernel extends QMatrix {
 	@Override
 	void swap_index(int i, int j) {
 		do {
-			SVMNode[] _ = x[i];
+			ANNNode[] _ = x[i];
 			x[i] = x[j];
 			x[j] = _;
 		} while (false);
@@ -201,22 +201,22 @@ abstract class Kernel extends QMatrix {
 
 	double kernel_function(int i, int j) {
 		switch (kernel_type) {
-		case SVMParameter.LINEAR:
+		case ANNParameter.LINEAR:
 			return dot(x[i], x[j]);
-		case SVMParameter.POLY:
+		case ANNParameter.POLY:
 			return powi(gamma * dot(x[i], x[j]) + coef0, degree);
-		case SVMParameter.RBF:
+		case ANNParameter.RBF:
 			return Math.exp(-gamma * (x_square[i] + x_square[j] - 2 * dot(x[i], x[j])));
-		case SVMParameter.SIGMOID:
+		case ANNParameter.SIGMOID:
 			return Math.tanh(gamma * dot(x[i], x[j]) + coef0);
-		case SVMParameter.PRECOMPUTED:
+		case ANNParameter.PRECOMPUTED:
 			return x[i][(int) (x[j][0].value)].value;
 		default:
 			return 0; // java
 		}
 	}
 
-	Kernel(int l, SVMNode[][] x_, SVMParameter param) {
+	Kernel(int l, ANNNode[][] x_, ANNParameter param) {
 		this.kernel_type = param.kernel_type;
 		this.degree = param.degree;
 		this.gamma = param.gamma;
@@ -224,7 +224,7 @@ abstract class Kernel extends QMatrix {
 
 		x = x_.clone();
 
-		if (kernel_type == SVMParameter.RBF) {
+		if (kernel_type == ANNParameter.RBF) {
 			x_square = new double[l];
 			for (int i = 0; i < l; i++)
 				x_square[i] = dot(x[i], x[i]);
@@ -232,7 +232,7 @@ abstract class Kernel extends QMatrix {
 			x_square = null;
 	}
 
-	static double dot(SVMNode[] x, SVMNode[] y) {
+	static double dot(ANNNode[] x, ANNNode[] y) {
 		double sum = 0;
 		int xlen = x.length;
 		int ylen = y.length;
@@ -251,13 +251,13 @@ abstract class Kernel extends QMatrix {
 		return sum;
 	}
 
-	static double k_function(SVMNode[] x, SVMNode[] y, SVMParameter param) {
+	static double k_function(ANNNode[] x, ANNNode[] y, ANNParameter param) {
 		switch (param.kernel_type) {
-		case SVMParameter.LINEAR:
+		case ANNParameter.LINEAR:
 			return dot(x, y);
-		case SVMParameter.POLY:
+		case ANNParameter.POLY:
 			return powi(param.gamma * dot(x, y) + param.coef0, param.degree);
-		case SVMParameter.RBF: {
+		case ANNParameter.RBF: {
 			double sum = 0;
 			int xlen = x.length;
 			int ylen = y.length;
@@ -288,9 +288,9 @@ abstract class Kernel extends QMatrix {
 
 			return Math.exp(-param.gamma * sum);
 		}
-		case SVMParameter.SIGMOID:
+		case ANNParameter.SIGMOID:
 			return Math.tanh(param.gamma * dot(x, y) + param.coef0);
-		case SVMParameter.PRECOMPUTED:
+		case ANNParameter.PRECOMPUTED:
 			return x[(int) (y[0].value)].value;
 		default:
 			return 0; // java
@@ -428,7 +428,7 @@ class Solver {
 				nr_free++;
 
 		if (2 * nr_free < active_size)
-			SVM.info("\nWarning: using -h 0 may be faster\n");
+			ANN.info("\nWarning: using -h 0 may be faster\n");
 
 		if (nr_free * l > 2 * active_size * (l - active_size)) {
 			for (i = active_size; i < l; i++) {
@@ -511,7 +511,7 @@ class Solver {
 				counter = Math.min(l, 1000);
 				if (shrinking != 0)
 					do_shrinking();
-				SVM.info(".");
+				ANN.info(".");
 			}
 
 			if (select_working_set(working_set) != 0) {
@@ -519,7 +519,7 @@ class Solver {
 				reconstruct_gradient();
 				// reset active set size and check
 				active_size = l;
-				SVM.info("*");
+				ANN.info("*");
 				if (select_working_set(working_set) != 0)
 					break;
 				else
@@ -669,7 +669,7 @@ class Solver {
 		si.upper_bound_p = Cp;
 		si.upper_bound_n = Cn;
 
-		SVM.info("\noptimization finished, #iter = " + iter + "\n");
+		ANN.info("\noptimization finished, #iter = " + iter + "\n");
 	}
 
 	// return 1 if already optimal, return 0 otherwise
@@ -852,7 +852,7 @@ class Solver {
 }
 
 //
-// Solver for nu-svm classification and regression
+// Solver for nu-ANN classification and regression
 //
 // additional constraint: e^T \alpha = constant
 //
@@ -1077,7 +1077,7 @@ class SVC_Q extends Kernel {
 	private final Cache cache;
 	private final float[] QD;
 
-	SVC_Q(SVMProblem prob, SVMParameter param, byte[] y_) {
+	SVC_Q(ANNProblem prob, ANNParameter param, byte[] y_) {
 		super(prob.l, prob.x, param);
 		y = y_.clone();
 		cache = new Cache(prob.l, (long) (param.cache_size * (1 << 20)));
@@ -1124,7 +1124,7 @@ class ONE_CLASS_Q extends Kernel {
 	private final Cache cache;
 	private final float[] QD;
 
-	ONE_CLASS_Q(SVMProblem prob, SVMParameter param) {
+	ONE_CLASS_Q(ANNProblem prob, ANNParameter param) {
 		super(prob.l, prob.x, param);
 		cache = new Cache(prob.l, (long) (param.cache_size * (1 << 20)));
 		QD = new float[prob.l];
@@ -1169,7 +1169,7 @@ class SVR_Q extends Kernel {
 	private float[][] buffer;
 	private final float[] QD;
 
-	SVR_Q(SVMProblem prob, SVMParameter param) {
+	SVR_Q(ANNProblem prob, ANNParameter param) {
 		super(prob.l, prob.x, param);
 		l = prob.l;
 		cache = new Cache(l, (long) (param.cache_size * (1 << 20)));
@@ -1231,13 +1231,13 @@ class SVR_Q extends Kernel {
 	}
 }
 
-public class SVM {
+public class ANN {
 	//
 	// construct and solve various formulations
 	//
-	public static final int LIBSVM_VERSION = 289;
+	public static final int LIBANN_VERSION = 289;
 
-	public static SVMPrintInterface svm_print_string = new SVMPrintInterface() {
+	public static ANNPrintInterface ANN_print_string = new ANNPrintInterface() {
 
 		@Override
 		public void print(String s) {
@@ -1247,10 +1247,10 @@ public class SVM {
 	};
 
 	static void info(String s) {
-		svm_print_string.print(s);
+		ANN_print_string.print(s);
 	}
 
-	private static void solve_c_svc(SVMProblem prob, SVMParameter param, double[] alpha, Solver.SolutionInfo si,
+	private static void solve_c_svc(ANNProblem prob, ANNParameter param, double[] alpha, Solver.SolutionInfo si,
 			double Cp, double Cn) {
 		int l = prob.l;
 		double[] minus_ones = new double[l];
@@ -1275,13 +1275,13 @@ public class SVM {
 			sum_alpha += alpha[i];
 
 		if (Cp == Cn)
-			SVM.info("nu = " + sum_alpha / (Cp * prob.l) + "\n");
+			ANN.info("nu = " + sum_alpha / (Cp * prob.l) + "\n");
 
 		for (i = 0; i < l; i++)
 			alpha[i] *= y[i];
 	}
 
-	private static void solve_nu_svc(SVMProblem prob, SVMParameter param, double[] alpha, Solver.SolutionInfo si) {
+	private static void solve_nu_svc(ANNProblem prob, ANNParameter param, double[] alpha, Solver.SolutionInfo si) {
 		int i;
 		int l = prob.l;
 		double nu = param.nu;
@@ -1315,7 +1315,7 @@ public class SVM {
 		s.Solve(l, new SVC_Q(prob, param, y), zeros, y, alpha, 1.0, 1.0, param.eps, si, param.shrinking);
 		double r = si.r;
 
-		SVM.info("C = " + 1 / r + "\n");
+		ANN.info("C = " + 1 / r + "\n");
 
 		for (i = 0; i < l; i++)
 			alpha[i] *= y[i] / r;
@@ -1326,7 +1326,7 @@ public class SVM {
 		si.upper_bound_n = 1 / r;
 	}
 
-	private static void solve_one_class(SVMProblem prob, SVMParameter param, double[] alpha, Solver.SolutionInfo si) {
+	private static void solve_one_class(ANNProblem prob, ANNParameter param, double[] alpha, Solver.SolutionInfo si) {
 		int l = prob.l;
 		double[] zeros = new double[l];
 		byte[] ones = new byte[l];
@@ -1350,7 +1350,7 @@ public class SVM {
 		s.Solve(l, new ONE_CLASS_Q(prob, param), zeros, ones, alpha, 1.0, 1.0, param.eps, si, param.shrinking);
 	}
 
-	private static void solve_epsilon_svr(SVMProblem prob, SVMParameter param, double[] alpha, Solver.SolutionInfo si) {
+	private static void solve_epsilon_svr(ANNProblem prob, ANNParameter param, double[] alpha, Solver.SolutionInfo si) {
 		int l = prob.l;
 		double[] alpha2 = new double[2 * l];
 		double[] linear_term = new double[2 * l];
@@ -1376,10 +1376,10 @@ public class SVM {
 			alpha[i] = alpha2[i] - alpha2[i + l];
 			sum_alpha += Math.abs(alpha[i]);
 		}
-		SVM.info("nu = " + sum_alpha / (param.C * l) + "\n");
+		ANN.info("nu = " + sum_alpha / (param.C * l) + "\n");
 	}
 
-	private static void solve_nu_svr(SVMProblem prob, SVMParameter param, double[] alpha, Solver.SolutionInfo si) {
+	private static void solve_nu_svr(ANNProblem prob, ANNParameter param, double[] alpha, Solver.SolutionInfo si) {
 		int l = prob.l;
 		double C = param.C;
 		double[] alpha2 = new double[2 * l];
@@ -1402,7 +1402,7 @@ public class SVM {
 		Solver_NU s = new Solver_NU();
 		s.Solve(2 * l, new SVR_Q(prob, param), linear_term, y, alpha2, C, C, param.eps, si, param.shrinking);
 
-		SVM.info("epsilon = " + (-si.r) + "\n");
+		ANN.info("epsilon = " + (-si.r) + "\n");
 
 		for (i = 0; i < l; i++)
 			alpha[i] = alpha2[i] - alpha2[i + l];
@@ -1416,28 +1416,28 @@ public class SVM {
 		double rho;
 	};
 
-	static decision_function svm_train_one(SVMProblem prob, SVMParameter param, double Cp, double Cn) {
+	static decision_function ANN_train_one(ANNProblem prob, ANNParameter param, double Cp, double Cn) {
 		double[] alpha = new double[prob.l];
 		Solver.SolutionInfo si = new Solver.SolutionInfo();
 		switch (param.svm_type) {
-		case SVMParameter.C_SVC:
+		case ANNParameter.C_SVC:
 			solve_c_svc(prob, param, alpha, si, Cp, Cn);
 			break;
-		case SVMParameter.NU_SVC:
+		case ANNParameter.NU_SVC:
 			solve_nu_svc(prob, param, alpha, si);
 			break;
-		case SVMParameter.ONE_CLASS:
+		case ANNParameter.ONE_CLASS:
 			solve_one_class(prob, param, alpha, si);
 			break;
-		case SVMParameter.EPSILON_SVR:
+		case ANNParameter.EPSILON_SVR:
 			solve_epsilon_svr(prob, param, alpha, si);
 			break;
-		case SVMParameter.NU_SVR:
+		case ANNParameter.NU_SVR:
 			solve_nu_svr(prob, param, alpha, si);
 			break;
 		}
 
-		SVM.info("obj = " + si.obj + ", rho = " + si.rho + "\n");
+		ANN.info("obj = " + si.obj + ", rho = " + si.rho + "\n");
 
 		// output SVs
 
@@ -1456,7 +1456,7 @@ public class SVM {
 			}
 		}
 
-		SVM.info("nSV = " + nSV + ", nBSV = " + nBSV + "\n");
+		ANN.info("nSV = " + nSV + ", nBSV = " + nBSV + "\n");
 
 		decision_function f = new decision_function();
 		f.alpha = alpha;
@@ -1464,7 +1464,7 @@ public class SVM {
 		return f;
 	}
 
-	// Platt's binary SVM Probablistic Output: an improvement from Lin et al.
+	// Platt's binary ANN Probablistic Output: an improvement from Lin et al.
 	private static void sigmoid_train(int l, double[] dec_values, double[] labels, double[] probAB) {
 		double A, B;
 		double prior1 = 0, prior0 = 0;
@@ -1563,13 +1563,13 @@ public class SVM {
 			}
 
 			if (stepsize < min_step) {
-				SVM.info("Line search fails in two-class probability estimates\n");
+				ANN.info("Line search fails in two-class probability estimates\n");
 				break;
 			}
 		}
 
 		if (iter >= max_iter)
-			SVM.info("Reaching maximal iterations in two-class probability estimates\n");
+			ANN.info("Reaching maximal iterations in two-class probability estimates\n");
 		probAB[0] = A;
 		probAB[1] = B;
 	}
@@ -1631,11 +1631,11 @@ public class SVM {
 			}
 		}
 		if (iter >= max_iter)
-			SVM.info("Exceeds max_iter in multiclass_prob\n");
+			ANN.info("Exceeds max_iter in multiclass_prob\n");
 	}
 
 	// Cross-validation decision values for probability estimates
-	private static void svm_binary_svc_probability(SVMProblem prob, SVMParameter param, double Cp, double Cn,
+	private static void ANN_binary_svc_probability(ANNProblem prob, ANNParameter param, double Cp, double Cn,
 			double[] probAB) {
 		int i;
 		int nr_fold = 5;
@@ -1657,10 +1657,10 @@ public class SVM {
 			int begin = i * prob.l / nr_fold;
 			int end = (i + 1) * prob.l / nr_fold;
 			int j, k;
-			SVMProblem subprob = new SVMProblem();
+			ANNProblem subprob = new ANNProblem();
 
 			subprob.l = prob.l - (end - begin);
-			subprob.x = new SVMNode[subprob.l][];
+			subprob.x = new ANNNode[subprob.l][];
 			subprob.y = new double[subprob.l];
 
 			k = 0;
@@ -1691,7 +1691,7 @@ public class SVM {
 				for (j = begin; j < end; j++)
 					dec_values[perm[j]] = -1;
 			else {
-				SVMParameter subparam = (SVMParameter) param.clone();
+				ANNParameter subparam = (ANNParameter) param.clone();
 				subparam.probability = 0;
 				subparam.C = 1.0;
 				subparam.nr_weight = 2;
@@ -1701,10 +1701,10 @@ public class SVM {
 				subparam.weight_label[1] = -1;
 				subparam.weight[0] = Cp;
 				subparam.weight[1] = Cn;
-				SVMModel submodel = svm_train(subprob, subparam);
+				ANNModel submodel = ann_train(subprob, subparam);
 				for (j = begin; j < end; j++) {
 					double[] dec_value = new double[1];
-					svm_predict_values(submodel, prob.x[perm[j]], dec_value);
+					ANN_predict_values(submodel, prob.x[perm[j]], dec_value);
 					dec_values[perm[j]] = dec_value[0];
 					// ensure +1 -1 order; reason not using CV subroutine
 					dec_values[perm[j]] *= submodel.label[0];
@@ -1715,15 +1715,15 @@ public class SVM {
 	}
 
 	// Return parameter of a Laplace distribution
-	private static double svm_svr_probability(SVMProblem prob, SVMParameter param) {
+	private static double ANN_svr_probability(ANNProblem prob, ANNParameter param) {
 		int i;
 		int nr_fold = 5;
 		double[] ymv = new double[prob.l];
 		double mae = 0;
 
-		SVMParameter newparam = (SVMParameter) param.clone();
+		ANNParameter newparam = (ANNParameter) param.clone();
 		newparam.probability = 0;
-		svm_cross_validation(prob, newparam, nr_fold, ymv);
+		ANN_cross_validation(prob, newparam, nr_fold, ymv);
 		for (i = 0; i < prob.l; i++) {
 			ymv[i] = prob.y[i] - ymv[i];
 			mae += Math.abs(ymv[i]);
@@ -1738,7 +1738,7 @@ public class SVM {
 			else
 				mae += Math.abs(ymv[i]);
 		mae /= (prob.l - count);
-		SVM.info(
+		ANN.info(
 				"Prob. model for test data: target value = predicted value + z,\nz: Laplace distribution e^(-|z|/sigma)/(2sigma),sigma="
 						+ mae + "\n");
 		return mae;
@@ -1746,7 +1746,7 @@ public class SVM {
 
 	// label: label name, start: begin of each class, count: #data of classes, perm: indices to the original data
 	// perm, length l, must be allocated before calling this subroutine
-	private static void svm_group_classes(SVMProblem prob, int[] nr_class_ret, int[][] label_ret, int[][] start_ret,
+	private static void ANN_group_classes(ANNProblem prob, int[] nr_class_ret, int[][] label_ret, int[][] start_ret,
 			int[][] count_ret, int[] perm) {
 		int l = prob.l;
 		int max_nr_class = 16;
@@ -1803,13 +1803,13 @@ public class SVM {
 	//
 	// Interface functions
 	//
-	public static SVMModel svm_train(SVMProblem prob, SVMParameter param) {
-		SVMModel model = new SVMModel();
+	public static ANNModel ann_train(ANNProblem prob, ANNParameter param) {
+		ANNModel model = new ANNModel();
 		model.param = param;
 
-		if (param.svm_type == SVMParameter.ONE_CLASS || param.svm_type == SVMParameter.EPSILON_SVR
-				|| param.svm_type == SVMParameter.NU_SVR) {
-			// regression or one-class-svm
+		if (param.svm_type == ANNParameter.ONE_CLASS || param.svm_type == ANNParameter.EPSILON_SVR
+				|| param.svm_type == ANNParameter.NU_SVR) {
+			// regression or one-class-ANN
 			model.nr_class = 2;
 			model.label = null;
 			model.nSV = null;
@@ -1818,12 +1818,12 @@ public class SVM {
 			model.sv_coef = new double[1][];
 
 			if (param.probability == 1
-					&& (param.svm_type == SVMParameter.EPSILON_SVR || param.svm_type == SVMParameter.NU_SVR)) {
+					&& (param.svm_type == ANNParameter.EPSILON_SVR || param.svm_type == ANNParameter.NU_SVR)) {
 				model.probA = new double[1];
-				model.probA[0] = svm_svr_probability(prob, param);
+				model.probA[0] = ANN_svr_probability(prob, param);
 			}
 
-			decision_function f = svm_train_one(prob, param, 0, 0);
+			decision_function f = ANN_train_one(prob, param, 0, 0);
 			model.rho = new double[1];
 			model.rho[0] = f.rho;
 
@@ -1833,7 +1833,7 @@ public class SVM {
 				if (Math.abs(f.alpha[i]) > 0)
 					++nSV;
 			model.l = nSV;
-			model.SV = new SVMNode[nSV][];
+			model.SV = new ANNNode[nSV][];
 			model.sv_coef[0] = new double[nSV];
 			int j = 0;
 			for (i = 0; i < prob.l; i++)
@@ -1852,12 +1852,12 @@ public class SVM {
 			int[] perm = new int[l];
 
 			// group training data of the same class
-			svm_group_classes(prob, tmp_nr_class, tmp_label, tmp_start, tmp_count, perm);
+			ANN_group_classes(prob, tmp_nr_class, tmp_label, tmp_start, tmp_count, perm);
 			int nr_class = tmp_nr_class[0];
 			int[] label = tmp_label[0];
 			int[] start = tmp_start[0];
 			int[] count = tmp_count[0];
-			SVMNode[][] x = new SVMNode[l][];
+			ANNNode[][] x = new ANNNode[l][];
 			int i;
 			for (i = 0; i < l; i++)
 				x[i] = prob.x[perm[i]];
@@ -1895,11 +1895,11 @@ public class SVM {
 			int p = 0;
 			for (i = 0; i < nr_class; i++)
 				for (int j = i + 1; j < nr_class; j++) {
-					SVMProblem sub_prob = new SVMProblem();
+					ANNProblem sub_prob = new ANNProblem();
 					int si = start[i], sj = start[j];
 					int ci = count[i], cj = count[j];
 					sub_prob.l = ci + cj;
-					sub_prob.x = new SVMNode[sub_prob.l][];
+					sub_prob.x = new ANNNode[sub_prob.l][];
 					sub_prob.y = new double[sub_prob.l];
 					int k;
 					for (k = 0; k < ci; k++) {
@@ -1913,12 +1913,12 @@ public class SVM {
 
 					if (param.probability == 1) {
 						double[] probAB = new double[2];
-						svm_binary_svc_probability(sub_prob, param, weighted_C[i], weighted_C[j], probAB);
+						ANN_binary_svc_probability(sub_prob, param, weighted_C[i], weighted_C[j], probAB);
 						probA[p] = probAB[0];
 						probB[p] = probAB[1];
 					}
 
-					f[p] = svm_train_one(sub_prob, param, weighted_C[i], weighted_C[j]);
+					f[p] = ANN_train_one(sub_prob, param, weighted_C[i], weighted_C[j]);
 					for (k = 0; k < ci; k++)
 						if (!nonzero[si + k] && Math.abs(f[p].alpha[k]) > 0)
 							nonzero[si + k] = true;
@@ -1966,10 +1966,10 @@ public class SVM {
 				nz_count[i] = nSV;
 			}
 
-			SVM.info("Total nSV = " + nnz + "\n");
+			ANN.info("Total nSV = " + nnz + "\n");
 
 			model.l = nnz;
-			model.SV = new SVMNode[nnz][];
+			model.SV = new ANNNode[nnz][];
 			p = 0;
 			for (i = 0; i < l; i++)
 				if (nonzero[i])
@@ -2012,7 +2012,7 @@ public class SVM {
 	}
 
 	// Stratified cross validation
-	public static void svm_cross_validation(SVMProblem prob, SVMParameter param, int nr_fold, double[] target) {
+	public static void ANN_cross_validation(ANNProblem prob, ANNParameter param, int nr_fold, double[] target) {
 		int i;
 		int[] fold_start = new int[nr_fold + 1];
 		int l = prob.l;
@@ -2020,13 +2020,13 @@ public class SVM {
 
 		// stratified cv may not give leave-one-out rate
 		// Each class to l folds -> some folds may have zero elements
-		if ((param.svm_type == SVMParameter.C_SVC || param.svm_type == SVMParameter.NU_SVC) && nr_fold < l) {
+		if ((param.svm_type == ANNParameter.C_SVC || param.svm_type == ANNParameter.NU_SVC) && nr_fold < l) {
 			int[] tmp_nr_class = new int[1];
 			int[][] tmp_label = new int[1][];
 			int[][] tmp_start = new int[1][];
 			int[][] tmp_count = new int[1][];
 
-			svm_group_classes(prob, tmp_nr_class, tmp_label, tmp_start, tmp_count, perm);
+			ANN_group_classes(prob, tmp_nr_class, tmp_label, tmp_start, tmp_count, perm);
 
 			int nr_class = tmp_nr_class[0];
 			int[] label = tmp_label[0];
@@ -2087,10 +2087,10 @@ public class SVM {
 			int begin = fold_start[i];
 			int end = fold_start[i + 1];
 			int j, k;
-			SVMProblem subprob = new SVMProblem();
+			ANNProblem subprob = new ANNProblem();
 
 			subprob.l = l - (end - begin);
-			subprob.x = new SVMNode[subprob.l][];
+			subprob.x = new ANNNode[subprob.l][];
 			subprob.y = new double[subprob.l];
 
 			k = 0;
@@ -2104,34 +2104,34 @@ public class SVM {
 				subprob.y[k] = prob.y[perm[j]];
 				++k;
 			}
-			SVMModel submodel = svm_train(subprob, param);
+			ANNModel submodel = ann_train(subprob, param);
 			if (param.probability == 1
-					&& (param.svm_type == SVMParameter.C_SVC || param.svm_type == SVMParameter.NU_SVC)) {
-				double[] prob_estimates = new double[svm_get_nr_class(submodel)];
+					&& (param.svm_type == ANNParameter.C_SVC || param.svm_type == ANNParameter.NU_SVC)) {
+				double[] prob_estimates = new double[ANN_get_nr_class(submodel)];
 				for (j = begin; j < end; j++)
-					target[perm[j]] = svm_predict_probability(submodel, prob.x[perm[j]], prob_estimates);
+					target[perm[j]] = ANN_predict_probability(submodel, prob.x[perm[j]], prob_estimates);
 			} else
 				for (j = begin; j < end; j++)
-					target[perm[j]] = svm_predict(submodel, prob.x[perm[j]]);
+					target[perm[j]] = ann_predict(submodel, prob.x[perm[j]]);
 		}
 	}
 
-	public static int svm_get_svm_type(SVMModel model) {
+	public static int ANN_get_svm_type(ANNModel model) {
 		return model.param.svm_type;
 	}
 
-	public static int svm_get_nr_class(SVMModel model) {
+	public static int ANN_get_nr_class(ANNModel model) {
 		return model.nr_class;
 	}
 
-	public static void svm_get_labels(SVMModel model, int[] label) {
+	public static void ANN_get_labels(ANNModel model, int[] label) {
 		if (model.label != null)
 			for (int i = 0; i < model.nr_class; i++)
 				label[i] = model.label[i];
 	}
 
-	public static double svm_get_svr_probability(SVMModel model) {
-		if ((model.param.svm_type == SVMParameter.EPSILON_SVR || model.param.svm_type == SVMParameter.NU_SVR)
+	public static double ANN_get_svr_probability(ANNModel model) {
+		if ((model.param.svm_type == ANNParameter.EPSILON_SVR || model.param.svm_type == ANNParameter.NU_SVR)
 				&& model.probA != null)
 			return model.probA[0];
 		else {
@@ -2140,9 +2140,9 @@ public class SVM {
 		}
 	}
 
-	public static void svm_predict_values(SVMModel model, SVMNode[] x, double[] dec_values) {
-		if (model.param.svm_type == SVMParameter.ONE_CLASS || model.param.svm_type == SVMParameter.EPSILON_SVR
-				|| model.param.svm_type == SVMParameter.NU_SVR) {
+	public static void ANN_predict_values(ANNModel model, ANNNode[] x, double[] dec_values) {
+		if (model.param.svm_type == ANNParameter.ONE_CLASS || model.param.svm_type == ANNParameter.EPSILON_SVR
+				|| model.param.svm_type == ANNParameter.NU_SVR) {
 			double[] sv_coef = model.sv_coef[0];
 			double sum = 0;
 			for (int i = 0; i < model.l; i++)
@@ -2186,13 +2186,13 @@ public class SVM {
 		}
 	}
 
-	public static double svm_predict(SVMModel model, SVMNode[] x) {
-		if (model.param.svm_type == SVMParameter.ONE_CLASS || model.param.svm_type == SVMParameter.EPSILON_SVR
-				|| model.param.svm_type == SVMParameter.NU_SVR) {
+	public static double ann_predict(ANNModel model, ANNNode[] x) {
+		if (model.param.svm_type == ANNParameter.ONE_CLASS || model.param.svm_type == ANNParameter.EPSILON_SVR
+				|| model.param.svm_type == ANNParameter.NU_SVR) {
 			double[] res = new double[1];
-			svm_predict_values(model, x, res);
+			ANN_predict_values(model, x, res);
 
-			if (model.param.svm_type == SVMParameter.ONE_CLASS)
+			if (model.param.svm_type == ANNParameter.ONE_CLASS)
 				return (res[0] > 0) ? 1 : -1;
 			else
 				return res[0];
@@ -2200,7 +2200,7 @@ public class SVM {
 			int i;
 			int nr_class = model.nr_class;
 			double[] dec_values = new double[nr_class * (nr_class - 1) / 2];
-			svm_predict_values(model, x, dec_values);
+			ANN_predict_values(model, x, dec_values);
 
 			int[] vote = new int[nr_class];
 			for (i = 0; i < nr_class; i++)
@@ -2222,13 +2222,13 @@ public class SVM {
 		}
 	}
 
-	public static double svm_predict_probability(SVMModel model, SVMNode[] x, double[] prob_estimates) {
-		if ((model.param.svm_type == SVMParameter.C_SVC || model.param.svm_type == SVMParameter.NU_SVC)
+	public static double ANN_predict_probability(ANNModel model, ANNNode[] x, double[] prob_estimates) {
+		if ((model.param.svm_type == ANNParameter.C_SVC || model.param.svm_type == ANNParameter.NU_SVC)
 				&& model.probA != null && model.probB != null) {
 			int i;
 			int nr_class = model.nr_class;
 			double[] dec_values = new double[nr_class * (nr_class - 1) / 2];
-			svm_predict_values(model, x, dec_values);
+			ANN_predict_values(model, x, dec_values);
 
 			double min_prob = 1e-7;
 			double[][] pairwise_prob = new double[nr_class][nr_class];
@@ -2250,29 +2250,29 @@ public class SVM {
 					prob_max_idx = i;
 			return model.label[prob_max_idx];
 		} else
-			return svm_predict(model, x);
+			return ann_predict(model, x);
 	}
 
 	static final String svm_type_table[] = { "c_svc", "nu_svc", "one_class", "epsilon_svr", "nu_svr", };
 
 	static final String kernel_type_table[] = { "linear", "polynomial", "rbf", "sigmoid", "precomputed" };
 
-	public static void svm_save_model(String model_file_name, SVMModel model) throws IOException {
+	public static void ANN_save_model(String model_file_name, ANNModel model) throws IOException {
 		DataOutputStream fp = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(model_file_name)));
 
-		SVMParameter param = model.param;
+		ANNParameter param = model.param;
 
 		fp.writeBytes("svm_type " + svm_type_table[param.svm_type] + "\n");
 		fp.writeBytes("kernel_type " + kernel_type_table[param.kernel_type] + "\n");
 
-		if (param.kernel_type == SVMParameter.POLY)
+		if (param.kernel_type == ANNParameter.POLY)
 			fp.writeBytes("degree " + param.degree + "\n");
 
-		if (param.kernel_type == SVMParameter.POLY || param.kernel_type == SVMParameter.RBF
-				|| param.kernel_type == SVMParameter.SIGMOID)
+		if (param.kernel_type == ANNParameter.POLY || param.kernel_type == ANNParameter.RBF
+				|| param.kernel_type == ANNParameter.SIGMOID)
 			fp.writeBytes("gamma " + param.gamma + "\n");
 
-		if (param.kernel_type == SVMParameter.POLY || param.kernel_type == SVMParameter.SIGMOID)
+		if (param.kernel_type == ANNParameter.POLY || param.kernel_type == ANNParameter.SIGMOID)
 			fp.writeBytes("coef0 " + param.coef0 + "\n");
 
 		int nr_class = model.nr_class;
@@ -2317,14 +2317,14 @@ public class SVM {
 
 		fp.writeBytes("SV\n");
 		double[][] sv_coef = model.sv_coef;
-		SVMNode[][] SV = model.SV;
+		ANNNode[][] SV = model.SV;
 
 		for (int i = 0; i < l; i++) {
 			for (int j = 0; j < nr_class - 1; j++)
 				fp.writeBytes(sv_coef[j][i] + " ");
 
-			SVMNode[] p = SV[i];
-			if (param.kernel_type == SVMParameter.PRECOMPUTED)
+			ANNNode[] p = SV[i];
+			if (param.kernel_type == ANNParameter.PRECOMPUTED)
 				fp.writeBytes("0:" + (int) (p[0].value));
 			else
 				for (int j = 0; j < p.length; j++)
@@ -2343,13 +2343,13 @@ public class SVM {
 		return Integer.parseInt(s);
 	}
 
-	public static SVMModel svm_load_model(String model_file_name) throws IOException {
+	public static ANNModel ANN_load_model(String model_file_name) throws IOException {
 		BufferedReader fp = new BufferedReader(new FileReader(model_file_name));
 
 		// read parameters
 
-		SVMModel model = new SVMModel();
-		SVMParameter param = new SVMParameter();
+		ANNModel model = new ANNModel();
+		ANNParameter param = new ANNParameter();
 		model.param = param;
 		model.rho = null;
 		model.probA = null;
@@ -2370,7 +2370,7 @@ public class SVM {
 					}
 				}
 				if (i == svm_type_table.length) {
-					System.err.print("unknown svm type.\n");
+					System.err.print("unknown ANN type.\n");
 					return null;
 				}
 			} else if (cmd.startsWith("kernel_type")) {
@@ -2438,7 +2438,7 @@ public class SVM {
 		int m = model.nr_class - 1;
 		int l = model.l;
 		model.sv_coef = new double[m][l];
-		model.SV = new SVMNode[l][];
+		model.SV = new ANNNode[l][];
 
 		for (int i = 0; i < l; i++) {
 			String line = fp.readLine();
@@ -2447,9 +2447,9 @@ public class SVM {
 			for (int k = 0; k < m; k++)
 				model.sv_coef[k][i] = atof(st.nextToken());
 			int n = st.countTokens() / 2;
-			model.SV[i] = new SVMNode[n];
+			model.SV[i] = new ANNNode[n];
 			for (int j = 0; j < n; j++) {
-				model.SV[i][j] = new SVMNode();
+				model.SV[i][j] = new ANNNode();
 				model.SV[i][j].index = atoi(st.nextToken());
 				model.SV[i][j].value = atof(st.nextToken());
 			}
@@ -2460,24 +2460,24 @@ public class SVM {
 	}
 
 	/**
-	 * 对svm的配置参数叫验证，因为有些参数只针对部分的支持向量机的类型
+	 * 对ANN的配置参数叫验证，因为有些参数只针对部分的支持向量机的类型
 	 * @param prob
 	 * @param param
 	 * @return
 	 */
-	public static String svm_check_parameter(SVMProblem prob, SVMParameter param) {
+	public static String ann_check_parameter(ANNProblem prob, ANNParameter param) {
 		// svm_type
 
 		int svm_type = param.svm_type;
-		if (svm_type != SVMParameter.C_SVC && svm_type != SVMParameter.NU_SVC && svm_type != SVMParameter.ONE_CLASS
-				&& svm_type != SVMParameter.EPSILON_SVR && svm_type != SVMParameter.NU_SVR)
-			return "unknown svm type";
+		if (svm_type != ANNParameter.C_SVC && svm_type != ANNParameter.NU_SVC && svm_type != ANNParameter.ONE_CLASS
+				&& svm_type != ANNParameter.EPSILON_SVR && svm_type != ANNParameter.NU_SVR)
+			return "unknown ANN type";
 
 		// kernel_type, degree
 
 		int kernel_type = param.kernel_type;
-		if (kernel_type != SVMParameter.LINEAR && kernel_type != SVMParameter.POLY && kernel_type != SVMParameter.RBF
-				&& kernel_type != SVMParameter.SIGMOID && kernel_type != SVMParameter.PRECOMPUTED)
+		if (kernel_type != ANNParameter.LINEAR && kernel_type != ANNParameter.POLY && kernel_type != ANNParameter.RBF
+				&& kernel_type != ANNParameter.SIGMOID && kernel_type != ANNParameter.PRECOMPUTED)
 			return "unknown kernel type";
 
 		if (param.degree < 0)
@@ -2491,15 +2491,15 @@ public class SVM {
 		if (param.eps <= 0)
 			return "eps <= 0";
 
-		if (svm_type == SVMParameter.C_SVC || svm_type == SVMParameter.EPSILON_SVR || svm_type == SVMParameter.NU_SVR)
+		if (svm_type == ANNParameter.C_SVC || svm_type == ANNParameter.EPSILON_SVR || svm_type == ANNParameter.NU_SVR)
 			if (param.C <= 0)
 				return "C <= 0";
 
-		if (svm_type == SVMParameter.NU_SVC || svm_type == SVMParameter.ONE_CLASS || svm_type == SVMParameter.NU_SVR)
+		if (svm_type == ANNParameter.NU_SVC || svm_type == ANNParameter.ONE_CLASS || svm_type == ANNParameter.NU_SVR)
 			if (param.nu <= 0 || param.nu > 1)
 				return "nu <= 0 or nu > 1";
 
-		if (svm_type == SVMParameter.EPSILON_SVR)
+		if (svm_type == ANNParameter.EPSILON_SVR)
 			if (param.p < 0)
 				return "p < 0";
 
@@ -2509,12 +2509,12 @@ public class SVM {
 		if (param.probability != 0 && param.probability != 1)
 			return "probability != 0 and probability != 1";
 
-		if (param.probability == 1 && svm_type == SVMParameter.ONE_CLASS)
-			return "one-class SVM probability output not supported yet";
+		if (param.probability == 1 && svm_type == ANNParameter.ONE_CLASS)
+			return "one-class ANN probability output not supported yet";
 
 		// check whether nu-svc is feasible
 
-		if (svm_type == SVMParameter.NU_SVC) {
+		if (svm_type == ANNParameter.NU_SVC) {
 			int l = prob.l;
 			int max_nr_class = 16;
 			int nr_class = 0;
@@ -2561,10 +2561,10 @@ public class SVM {
 		return null;
 	}
 
-	public static int svm_check_probability_model(SVMModel model) {
-		if (((model.param.svm_type == SVMParameter.C_SVC || model.param.svm_type == SVMParameter.NU_SVC)
+	public static int ANN_check_probability_model(ANNModel model) {
+		if (((model.param.svm_type == ANNParameter.C_SVC || model.param.svm_type == ANNParameter.NU_SVC)
 				&& model.probA != null && model.probB != null)
-				|| ((model.param.svm_type == SVMParameter.EPSILON_SVR || model.param.svm_type == SVMParameter.NU_SVR)
+				|| ((model.param.svm_type == ANNParameter.EPSILON_SVR || model.param.svm_type == ANNParameter.NU_SVR)
 						&& model.probA != null))
 			return 1;
 		else

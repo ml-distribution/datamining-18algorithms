@@ -1,20 +1,20 @@
 //
 // svm_model
 //
-package com.jusdt.datamining.statistical.learning.svm;
+package com.jusdt.datamining.statistical.learning.ann;
 
 import java.io.Serializable;
 
-public class SVMModel implements Serializable {
+public class ANNModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	//svm支持向量机的参数
-	SVMParameter param; // parameter
+	ANNParameter param; // parameter
 	//分类的类型数
 	int nr_class; // number of classes, = 2 in regression/one class svm
 	int l; // total #SV
-	SVMNode[][] SV; // SVs (SV[l])
+	ANNNode[][] SV; // SVs (SV[l])
 	double[][] sv_coef; // coefficients for SVs in decision functions (sv_coef[k-1][l])
 	double[] rho; // constants in decision functions (rho[k*(k-1)/2])
 	double[] probA; // pariwise probability information
