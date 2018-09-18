@@ -12,9 +12,9 @@ import java.util.Map;
 //import org.apache.activemq.filter.ComparisonExpression;
 
 /**
- * k最近邻算法工具类
+ * K最近邻算法工具类
  */
-public class KNNTool {
+public class KNNCore {
 
 	// 为4个类别设置权重，默认权重比一致
 	public int[] classWeightArray = new int[] { 1, 1, 1, 1 };
@@ -33,7 +33,7 @@ public class KNNTool {
 	// 测试集数据
 	private String[][] testData;
 
-	public KNNTool(String trainDataPath, String testDataPath) {
+	public KNNCore(String trainDataPath, String testDataPath) {
 		this.trainDataPath = trainDataPath;
 		this.testDataPath = testDataPath;
 		readDataFormFile();

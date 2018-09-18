@@ -9,7 +9,7 @@ public class Sample implements Comparable<Sample> {
 	private String className;
 	// 样本数据的特征向量
 	private String[] features;
-	//测试样本之间的间距值，以此做排序
+	// 测试样本之间的间距值，以此做排序
 	private Integer distance;
 
 	public Sample(String[] features) {
@@ -47,7 +47,6 @@ public class Sample implements Comparable<Sample> {
 
 	@Override
 	public int compareTo(Sample o) {
-		// TODO Auto-generated method stub
 		return this.getDistance().compareTo(o.getDistance());
 	}
 
