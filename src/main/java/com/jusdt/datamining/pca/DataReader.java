@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Simple vector data reader
- *
- * @author uwe
+ * 简单的向量数据读取
  */
 public class DataReader extends BufferedReader {
 
@@ -43,6 +41,8 @@ public class DataReader extends BufferedReader {
 		for (Double d : dataList) {
 			vector[i++] = d;
 		}
+
 		return vector;
 	}
+
 }

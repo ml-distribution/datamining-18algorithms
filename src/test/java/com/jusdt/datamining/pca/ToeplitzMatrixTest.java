@@ -19,7 +19,6 @@ public class ToeplitzMatrixTest extends TestCase {
 	}
 
 	public void testToeplitz() {
-
 		double[] data = new double[] { 1, 2, 3, 4, 5, 6 };
 
 		ToeplitzMatrix m = new ToeplitzMatrix(data);
@@ -69,6 +68,6 @@ public class ToeplitzMatrixTest extends TestCase {
 		assertEquals("5,3", 3., a[5][3]);
 		assertEquals("5,4", 2., a[5][4]);
 		assertEquals("5,5", 1., a[5][5]);
-
 	}
+
 }

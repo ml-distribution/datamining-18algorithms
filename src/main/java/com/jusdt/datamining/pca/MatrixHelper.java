@@ -7,7 +7,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * Matrix helper functions
+ * 矩阵的操作类
  */
 public class MatrixHelper {
 

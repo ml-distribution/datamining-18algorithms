@@ -1,9 +1,9 @@
 package com.jusdt.datamining.pca;
 
 /**
- * Principal component analysis core.
+ * PCA核心算法类
  */
-public class PCA {
+public class PCACore {
 
 	// The incoming matrix
 	private final Matrix m;
@@ -14,7 +14,7 @@ public class PCA {
 	// lambda
 	private final Matrix lambda;
 
-	public PCA(Matrix x) {
+	public PCACore(Matrix x) {
 
 		// Weight and center the matrix
 		this.m = x.wcenter();

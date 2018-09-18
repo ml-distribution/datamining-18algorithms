@@ -1,6 +1,7 @@
 package com.jusdt.datamining.pca;
 
 /**
+ * 矩阵对象
  * The Matrix Class provides the fundamental operations of numerical linear
  * algebra. This is not a general purpose matrix class, but provides enough
  * support for our needs.

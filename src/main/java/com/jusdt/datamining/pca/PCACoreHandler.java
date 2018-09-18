@@ -1,11 +1,11 @@
 package com.jusdt.datamining.pca;
 
 /**
- * Wraps PCA invocations
+ * 封装PCACore的调用类
  */
-public class PCAHandler {
+public class PCACoreHandler {
 
-	public PCAHandler() {
+	public PCACoreHandler() {
 	}
 
 	/**
@@ -14,8 +14,8 @@ public class PCAHandler {
 	 * @param m the matrix
 	 * @return the principle components
 	 */
-	public PCA fromMatrix(Matrix m) {
-		return new PCA(m);
+	public PCACore fromMatrix(Matrix m) {
+		return new PCACore(m);
 	}
 
 	/**
@@ -26,9 +26,9 @@ public class PCAHandler {
 	 * @param data the time series vector
 	 * @return the principle components
 	 */
-	public PCA fromSimpleTimeSeries(double[] data) {
+	public PCACore fromSimpleTimeSeries(double[] data) {
 		Matrix m = new ToeplitzMatrix(data);
-		PCA pca = new PCA(m);
+		PCACore pca = new PCACore(m);
 		return pca;
 	}
 
@@ -41,7 +41,7 @@ public class PCAHandler {
 	 * @param compare the principal factor columns to compare
 	 * @return the correlations circle
 	 */
-	public Matrix correlationCircle(PCA pca, int[] compare) {
+	public Matrix correlationCircle(PCACore pca, int[] compare) {
 		double[][] F = pca.getPrinicipalFactors().getArray();
 		double[][] L = pca.getLambda().getArray();
 
@@ -67,7 +67,7 @@ public class PCAHandler {
 	 * @param pca the pca
 	 * @return the correlations circle
 	 */
-	public Matrix correlationCircle(PCA pca) {
+	public Matrix correlationCircle(PCACore pca) {
 		return correlationCircle(pca, new int[] { 0, 1 });
 	}
 
@@ -77,7 +77,7 @@ public class PCAHandler {
 	 * @param pca the pca
 	 * @return the normalized eigenvalues;
 	 */
-	public Matrix normalizeLambda(PCA pca) {
+	public Matrix normalizeLambda(PCACore pca) {
 
 		double[][] L = pca.getLambda().getArrayCopy();
 		Matrix nl = new Matrix(L);
@@ -97,7 +97,7 @@ public class PCAHandler {
 	 * @param pca is the pca
 	 * @return the cumulative contributions of the eigenvectors
 	 */
-	public Matrix cumulativeContribution(PCA pca) {
+	public Matrix cumulativeContribution(PCACore pca) {
 		Matrix nl = normalizeLambda(pca);
 		double[][] CC = nl.getArrayCopy();
 		Matrix cc = new Matrix(CC);

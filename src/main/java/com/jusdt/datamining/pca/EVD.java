@@ -1,6 +1,8 @@
 package com.jusdt.datamining.pca;
 
 /**
+ * 实时矩阵的EVD数据模型
+ *
  * Eigenvalues and eigenvectors of a real matrix.
  *
  * <p>If A is symmetric, then A = V*D*V' where the eigenvalue matrix D is

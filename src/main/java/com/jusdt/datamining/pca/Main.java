@@ -6,9 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Invoke the PCA from the command line
- *
- * @author uwe
+ * 命令行操作类
  */
 public class Main {
 
@@ -29,8 +27,8 @@ public class Main {
 				double[] data = dr.getData();
 				System.out.println(filename + ": vector length = " + data.length);
 
-				PCAHandler handler = new PCAHandler();
-				PCA pca = handler.fromSimpleTimeSeries(data);
+				PCACoreHandler handler = new PCACoreHandler();
+				PCACore pca = handler.fromSimpleTimeSeries(data);
 
 				log(filename + "_pcomps.data", filename + ": principle components", pca.getPrincipalComponents());
 				log(filename + "_lambda.data", filename + ": lambda", pca.getLambda());
