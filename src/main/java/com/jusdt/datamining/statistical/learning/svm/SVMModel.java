@@ -10,7 +10,7 @@ public class SVMModel implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//svm支持向量机的参数
-	svm_parameter param; // parameter
+	SVMParameter param; // parameter
 	//分类的类型数
 	int nr_class; // number of classes, = 2 in regression/one class svm
 	int l; // total #SV

@@ -9,16 +9,16 @@ import java.util.List;
 /**
  * SVM支持向量机工具类
  */
-public class SVMTool {
+public class SVMCore {
 
 	// 训练集数据文件路径
 	private String trainDataPath;
 	// svm_problem对象，用于构造svm model模型
 	private SVMProblem sProblem;
 	// svm参数，里面有svm支持向量机的类型和不同 的svm的核函数类型
-	private svm_parameter sParam;
+	private SVMParameter sParam;
 
-	public SVMTool(String trainDataPath) {
+	public SVMCore(String trainDataPath) {
 		this.trainDataPath = trainDataPath;
 
 		// 初始化svm相关变量
@@ -69,12 +69,12 @@ public class SVMTool {
 	 *
 	 * @return
 	 */
-	private svm_parameter initSvmParam() {
+	private SVMParameter initSvmParam() {
 		// 定义svm_parameter对象
-		svm_parameter param = new svm_parameter();
-		param.svm_type = svm_parameter.EPSILON_SVR;
+		SVMParameter param = new SVMParameter();
+		param.svm_type = SVMParameter.EPSILON_SVR;
 		// 设置svm的核函数类型为线型
-		param.kernel_type = svm_parameter.LINEAR;
+		param.kernel_type = SVMParameter.LINEAR;
 		// 后面的参数配置只针对训练集的数据
 		param.cache_size = 100;
 		param.eps = 0.00001;

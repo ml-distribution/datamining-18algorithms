@@ -2,7 +2,7 @@ package com.jusdt.datamining.statistical.learning.svm;
 
 import java.io.Serializable;
 
-public class svm_parameter implements Cloneable, Serializable {
+public class SVMParameter implements Cloneable, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
